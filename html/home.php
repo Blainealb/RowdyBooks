@@ -38,7 +38,7 @@ if(mysqli_num_rows($result) > 0) {
 } else {
     echo "<h1 class='error'>Invalid email or password</h1>";
     echo "<p>Please try again...</p>";
-    header("refresh:3;url=index.php");
+    header("refresh:3;url=login.php");
     exit();
     
 }
