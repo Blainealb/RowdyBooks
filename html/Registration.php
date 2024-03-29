@@ -31,7 +31,7 @@ if(mysqli_num_rows($result) > 0) {
     //send them back to login
     echo "<p>Redirecting back to login...</p>";
     // Redirect back to the login page after 3 seconds
-    header("refresh:3;url=index.php");
+    header("refresh:3;url=login.php");
     exit();     
     
 } else {

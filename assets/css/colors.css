@@ -1,0 +1,14 @@
+/**
+ * File: colors.css
+ * Description: Provides the standard colors for every page on the website.
+ * @author Kaleb Phillips
+*/
+:root {
+    --primary-color:#f15a22;
+    --primary-color2:#ff5213;
+    --primary-color3:#cf6808;
+    --secondary-color:#0c2340;
+    --secondary-color2:#1f5494;
+    --secondary-color3:#170573;
+    --text-color:#ffffff;
+   }
