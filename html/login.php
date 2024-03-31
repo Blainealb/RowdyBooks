@@ -7,7 +7,11 @@ session_start();
   <meta charset="UTF-8">
   <title>Sign-Up/Login Form</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="../assets/css/login_style.css">
+=======
+<link rel="stylesheet" href="/assets/css/login_style.css">
+>>>>>>> 82e9472abe8792e3faac9fb0e7db1e9ba24b6a5e
 
 </head>
 <body>

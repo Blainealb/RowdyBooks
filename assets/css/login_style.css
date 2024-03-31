@@ -115,11 +115,11 @@ input, textarea {
 }
 input:focus, textarea:focus {
   outline: 0;
-  border-color: #0f2038;
+  border-color: #0c2340;
 }
 
 textarea {
-  border: 2px solid #0f2038;
+  border: 2px solid #0c2340;
   resize: vertical;
 }
 
