@@ -4707,7 +4707,7 @@ label {
       .order_d_inner .details_item .list li a span {
         width: 145px;
         display: inline-block;
-        color: var(--text-color)7; }
+        color: var(--text-color); }
 
 .order_details_table {
   background: #e5ecee;
