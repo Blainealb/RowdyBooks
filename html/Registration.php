@@ -1,6 +1,8 @@
 <?php
 
 session_start(); 
+
+
 // Check if the session variable is set
 if(isset($_SESSION['userid'])) {
     // User session exists, the user is logged in
@@ -17,7 +19,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
-$pwd = $_POST['pwd'];
+$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
 echo "<br>";
 
@@ -28,11 +30,10 @@ $result = mysqli_query($connection, $my_query);
 if(mysqli_num_rows($result) > 0) {
     echo "<h1 class='error'>Sorry! This email or username already exists! Please log in.</h1>";
     
-    //send them back to login
-    echo "<p>Redirecting back to login...</p>";
-    // Redirect back to the login page after 3 seconds
-    header("refresh:3;url=login.php");
-    exit();     
+   
+    //Redirect back to the login page after 3 seconds
+    header("Location: login.php");
+    //exit();     
     
 } else {
     $my_query = "INSERT INTO Users(fname, lname, username, email, pwd) VALUES ('$fname', '$lname', '$username', '$email', '$pwd')";

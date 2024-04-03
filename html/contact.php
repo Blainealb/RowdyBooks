@@ -5,7 +5,7 @@ session_start();
 // Check if the user is logged in
 function isLoggedIn() {
     // Check if the 'user_id' session variable is set
-    return isset($_SESSION['user_id']);
+    return isset($_SESSION['userid']);
 }
 
 // Redirect to the login page if the user is not logged in
@@ -15,8 +15,8 @@ if (!isLoggedIn()) {
 }
 
 // Get user's information from the session
-$userName = $_SESSION['user_name']; // Assuming you store user's name in the session
-$userEmail = $_SESSION['user_email']; // Assuming you store user's email in the session
+$userName = $_SESSION['username']; // Assuming you store user's name in the session
+$userEmail = $_SESSION['email'];
 ?>
 
 <!--
@@ -75,7 +75,7 @@ $userEmail = $_SESSION['user_email']; // Assuming you store user's email in the 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop New</a>
@@ -141,10 +141,8 @@ $userEmail = $_SESSION['user_email']; // Assuming you store user's email in the 
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 					<h1>Profile</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Contact</a>
-					</nav>
+					<h2>Welcome, <?php echo $userName; ?>!</h2>
+				
 				</div>
 			</div>
 		</div>
@@ -163,15 +161,13 @@ $userEmail = $_SESSION['user_email']; // Assuming you store user's email in the 
                     if ($isLoggedIn) {
                         // If the user is logged in, display profile information
                     ?>
-                            <h2>Welcome, [User's Name]!</h2>
-                            <div class="profile-info">
-                                <p><strong>Email:</strong> user@example.com</p>
-                                <p><strong>Joined:</strong> January 1, 2024</p>
-                                <!-- Add more profile information here -->
+			   
+                            <div class="profile-info">    
+                            <!-- Add more profile information here -->
                             </div>
                             <div class="profile-actions">
                                 <a href="#" class="btn btn-primary">Edit Profile</a>
-                                <a href="#" class="btn btn-danger">Logout</a>
+                                <a href="logout.php" class="btn btn-danger">Logout</a>
 			    </div>
 <?php
                     } else {
@@ -186,69 +182,6 @@ $userEmail = $_SESSION['user_email']; // Assuming you store user's email in the 
             </div>
         </section>
         <!-- End Profile Content -->
-
-
-
-
-
-	
-	<!--
-
-	================Contact Area =================
-	<section class="contact_area section_gap_bottom">
-		<div class="container">
-			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
-			 data-mlat="40.701083" data-mlon="-74.1522848">
-			</div>
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="contact_info">
-						<div class="info_item">
-							<i class="lnr lnr-home"></i>
-							<h6>California, United States</h6>
-							<p>Santa monica bullevard</p>
-						</div>
-						<div class="info_item">
-							<i class="lnr lnr-phone-handset"></i>
-							<h6><a href="#">00 (440) 9865 562</a></h6>
-							<p>Mon to Fri 9am to 6 pm</p>
-						</div>
-						<div class="info_item">
-							<i class="lnr lnr-envelope"></i>
-							<h6><a href="#">support@colorlib.com</a></h6>
-							<p>Send us your query anytime!</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
-							</div>
-							<div class="form-group">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"></textarea>
-							</div>
-						</div>
-						<div class="col-md-12 text-right">
-							<button type="submit" value="submit" class="primary-btn">Send Message</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-	================Contact Area =================
-	
-	-->
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
