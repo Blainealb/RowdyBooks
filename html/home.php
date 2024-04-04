@@ -1,17 +1,6 @@
 <?php
 session_start();
 
-
-// Check if the session variable is set
-if(isset($_SESSION['userid'])) {
-    // User session exists, the user is logged in
-    echo "User session is active. User is logged in.";
-} else {
-    // User session does not exist, the user is not logged in
-    echo "User session is not active. User is not logged in.";
-}
-
-
 require_once('dbconnect.php');
 
 $email = $_POST['email'];
@@ -33,11 +22,11 @@ if(mysqli_num_rows($result) > 0) {
     echo "<h1 class='success'>Congrats, you are now logged in</h1>";
     echo "<h1>Welcome back, ".$_SESSION['username']."!</h1>";
     echo "<p>The best website for trading your textbooks!</p>";
-    header("refresh:3;url=index.php");  
+    header("Location: index.php");  
 } else {
     echo "<h1 class='error'>Invalid email or password</h1>";
     echo "<p>Please try again...</p>";
-    header("refresh:3;url=login.php");
+    header("Location: login.php");
     exit();
     
 }
