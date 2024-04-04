@@ -1,3 +1,24 @@
+<?php
+// Start the session (if not already started)
+session_start();
+
+// Check if the user is logged in
+function isLoggedIn() {
+    // Check if the 'user_id' session variable is set
+    return isset($_SESSION['user_id']);
+}
+
+// Redirect to the login page if the user is not logged in
+if (!isLoggedIn()) {
+    header("Location: login.php");
+    exit(); // Stop further execution
+}
+
+// Get user's information from the session
+$userName = $_SESSION['user_name']; // Assuming you store user's name in the session
+$userEmail = $_SESSION['user_email']; // Assuming you store user's email in the session
+?>
+
 <!--
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
@@ -57,7 +78,7 @@
 							<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
+								 aria-expanded="false">Shop New</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
@@ -68,7 +89,7 @@
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Blog</a>
+								 aria-expanded="false">Trade Market</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
@@ -76,15 +97,22 @@
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
+								 aria-expanded="false">About Us</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
 									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
 									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 								</ul>
 							</li>
-							<li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li class="nav-item active submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                                 aria-expanded="false">My Account</a>
+                                                                <ul class="dropdown-menu">
+                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="contact.php">Profile</a></li>
+
+								</ul>
 						</ul>
+						
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
 							<li class="nav-item">
@@ -112,7 +140,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Contact Us</h1>
+					<h1>Profile</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">Contact</a>
@@ -123,7 +151,50 @@
 	</section>
 	<!-- End Banner Area -->
 
-	<!--================Contact Area =================-->
+	<!-- Profile Content -->
+        <section class="profile-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+			<div class="profile">
+			<?php
+                    // Assuming you have a variable $isLoggedIn set to true if the user is logged in
+                    $isLoggedIn = true; // You should replace this with your actual check for user login status
+                    if ($isLoggedIn) {
+                        // If the user is logged in, display profile information
+                    ?>
+                            <h2>Welcome, [User's Name]!</h2>
+                            <div class="profile-info">
+                                <p><strong>Email:</strong> user@example.com</p>
+                                <p><strong>Joined:</strong> January 1, 2024</p>
+                                <!-- Add more profile information here -->
+                            </div>
+                            <div class="profile-actions">
+                                <a href="#" class="btn btn-primary">Edit Profile</a>
+                                <a href="#" class="btn btn-danger">Logout</a>
+			    </div>
+<?php
+                    } else {
+                        // If the user is not logged in, redirect them to the login page
+                        header("Location: login.php");
+                        exit(); // Stop further execution
+                    }
+                    ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Profile Content -->
+
+
+
+
+
+	
+	<!--
+
+	================Contact Area =================
 	<section class="contact_area section_gap_bottom">
 		<div class="container">
 			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
@@ -175,7 +246,9 @@
 			</div>
 		</div>
 	</section>
-	<!--================Contact Area =================-->
+	================Contact Area =================
+	
+	-->
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
@@ -256,6 +329,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!-- End footer Area -->
+
+
 
 	<!--================Contact Success and Error message Area =================-->
 	<div id="success" class="modal modal-message fade" role="dialog">

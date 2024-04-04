@@ -33,8 +33,7 @@ if(mysqli_num_rows($result) > 0) {
     echo "<h1 class='success'>Congrats, you are now logged in</h1>";
     echo "<h1>Welcome back, ".$_SESSION['username']."!</h1>";
     echo "<p>The best website for trading your textbooks!</p>";
-
-    
+    header("refresh:3;url=index.php");  
 } else {
     echo "<h1 class='error'>Invalid email or password</h1>";
     echo "<p>Please try again...</p>";
