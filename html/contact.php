@@ -4,6 +4,10 @@
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/  
 	code modified by @author Kaleb Phillips
 -->
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -122,6 +126,7 @@
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">Element</a>
 					</nav>
+					<h2>Welcome, <?php echo ' '. $_SESSION['username']; ?>!</h2>
 				</div>
 			</div>
 		</div>

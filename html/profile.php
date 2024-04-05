@@ -110,7 +110,18 @@ $userEmail = $_SESSION['email'];
 							</li>
 							<li class="nav-item active submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                 aria-expanded="false">My Account</a>
+								 aria-expanded="false">
+								<?php
+        							$isLoggedIn = true; 
+
+        							if ($isLoggedIn) {
+            							echo htmlspecialchars($_SESSION['username']); 
+        							} else {
+            							echo "Log In";
+        							}
+        							?>
+   								</a>
+						
                                                                 <ul class="dropdown-menu">
                                                                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
 									<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
@@ -155,6 +166,23 @@ $userEmail = $_SESSION['email'];
 				
 				</div>
 			</div>
+			<div class="sidebar-categories">
+                                        <div class="head">Profile Options</div>
+                                        <ul class="main-categories">
+                                                <li class="main-nav-list"><a href="#"><span 
+                                                                 class="lnr lnr-arrow-right"></span>Edit Profile</a>
+                                                </li>
+                                                <li class="main-nav-list"><a href="#"><span 
+                                                                 class="lnr lnr-arrow-right"></span>View Wishlist</a>
+                                                </li>
+                                                <li class="main-nav-list"><a href="logout.php"><span
+                                                                 class="lnr lnr-arrow-right"></span>Log Out</a>
+                                                </li>
+
+                                        </ul>
+                                </div>
+
+                    <div class="col-md-6 offset-md-3">
 		</div>
 	</section>
 	<!-- End Banner Area -->
@@ -162,33 +190,16 @@ $userEmail = $_SESSION['email'];
 	<!-- Profile Content -->
         <section class="profile-section">
             <div class="container">
-                <div class="row">
+		<div class="row">
+
                     <div class="col-md-6 offset-md-3">
-			<div class="profile">
+	
+		<div class="profile">
 			<?php
                     $isLoggedIn = true; // You should replace this with your actual check for user login status
                     if ($isLoggedIn) {
 ?>
-			<div class="container border-top-generic">
-                        <h3 class="text-heading">Sample Buttons</h3>
-                        <div class="button-group-area">
-                                <a href="#" class="genric-btn default">Default</a>
-                                <a href="#" class="genric-btn primary">Primary</a>
-                                <a href="#" class="genric-btn success">Success</a>
-                                <a href="#" class="genric-btn info">Info</a>
-                                <a href="#" class="genric-btn warning">Warning</a>
-                                <a href="#" class="genric-btn danger">Danger</a>
-                                <a href="#" class="genric-btn link">Link</a>
-                                <a href="#" class="genric-btn disable">Disable</a>
-                        </div>
-</div>
 
-			<div class="button-group-area mt-40">
-				<div class="button-group">
-					<a href="logout.php" class="genric-btn primary e-large mb-3">Logout</a>
-			    		<a href="" class="genric-btn primary e-large">Edit Profile</a>
-                        	</div>
-			</div>
 		    <?php
                     } else {
                         // If the user is not logged in, redirect them to the login page

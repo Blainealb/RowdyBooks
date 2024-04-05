@@ -1,16 +1,16 @@
-<!--------------------------------------------------------------------------------------------------------
+<!--------------------------------------------------------------------------------------------------------------------------------
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
 	code modified by @author Kaleb Phillips
---------------------------------------------------------------------------------------------------------->
+--------------------------------------------------------------------------------------------------------------------------------->
 <?php
 session_start();
 
-/*--------------------------- Modifications by Kaleb Phillips: PHP ---------------------------------------
-	* Added functions for retrieving books from database.
-	* Added variables to store book titles and covers.
----------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------- Modifications by Kaleb Phillips: PHP --------------------------------------------------
+        * Added functions for retrieving books from database.
+        * Added variables to store book titles and covers.
+--------------------------------------------------------------------------------------------------------------------------------*/
 
 // Retrieve Products from Database
 require "bookFunctions.php";
@@ -98,7 +98,7 @@ $recent_book8_cover = $books[7]['image_path'];
 </head>
 
 <body>
-	<!--------------------------- Modifications by Kaleb Phillips: Header Area -------------------------------
+	<!-------------------------------------- Modifications by Kaleb Phillips: Header Area ------------------------------------------
 		* Removed default logo and added site name to header.
 		* Updated the names of navbar dropdown toggle buttons.
 		* Removed extra navbar dropdown toggle buttons.
@@ -107,7 +107,7 @@ $recent_book8_cover = $books[7]['image_path'];
 		* Added magnifier icon inside search bar.
 		* Updated the color of the search bar.
 		* Removed button to hide the search bar.
-	--------------------------------------------------------------------------------------------------------->
+	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-------------------------------------- Modifications by Blaine Byrd: Profile Page --------------------------------------------
                 * Modified Navbar to fit site needs
@@ -183,12 +183,11 @@ $recent_book8_cover = $books[7]['image_path'];
 	</header>
 	<!-- End Header Area -->
 
-	<!--------------------------- Modifications by Kaleb Phillips: Banner Area -------------------------------
+	<!-------------------------------------- Modifications by Kaleb Phillips: Banner Area ------------------------------------------
 		* Updated text in the banner for displaying new books.
 		* Updated the text for book titles and the images for covers to load dynamiclky from the database.
 		* Updated the color gradient of the add to bag button.
-	--------------------------------------------------------------------------------------------------------->
-
+	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- start banner Area -->
 	<section class="banner-area">
@@ -249,7 +248,7 @@ $recent_book8_cover = $books[7]['image_path'];
 	</section>
 	<!-- End banner Area -->
 
-	<!--------------------------- Modifications by Kaleb Phillips: Category Area ------------------------------
+	<!-------------------------------------- Modifications by Kaleb Phillips: Category Area ----------------------------------------
 		* Removed carousel feature.
 		* Updated the images for categories to be book covers to load dynamiclky from the database.
 		* Updated categories text with placeholders for book categories.
@@ -260,7 +259,7 @@ $recent_book8_cover = $books[7]['image_path'];
 		* Updated color of filter bar to orange.
 		* Updated color of selected page number in filter bar to blue.
 		* Removed extra prd-buttons from below categories.
-	--------------------------------------------------------------------------------------------------------->
+	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Category Area -->
 		<!-- Section Title -->
@@ -477,7 +476,7 @@ $recent_book8_cover = $books[7]['image_path'];
 			</div>
 		</div>
 
-	<!--------------------------- Modifications by Kaleb Phillips: Recently Viewed Area ----------------------
+	<!-------------------------------------- Modifications by Kaleb Phillips: Recently Viewed Area ---------------------------------
 		* Updated the text for book titles and the images for book covers to load dynamiclky from the database.
 		* Updated the color of the prd-buttons.
 		* Updated the color of the text for prd-buttons.
@@ -485,7 +484,7 @@ $recent_book8_cover = $books[7]['image_path'];
 		* Added filter bar above and below recently viewed from the category page.
 		* Updated color of filter bar to orange.
 		* Updated color of selected page number in filter bar to blue.
-	--------------------------------------------------------------------------------------------------------->
+	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Recently Viewed Area -->
 		<!-- Section Title -->
@@ -837,12 +836,12 @@ $recent_book8_cover = $books[7]['image_path'];
 		</div>
 	<!-- end product Area -->
 
-	<!--------------------------- Modifications by Kaleb Phillips: Footer Area -------------------------------
+	<!-------------------------------------- Modifications by Kaleb Phillips: Footer Area ------------------------------------------
 		* Updated text for About Us section to a placeholder.
 		* Removed newsletter forom.
 		* Removed Instagram feed section.
 		* Removed social media account links.
-	--------------------------------------------------------------------------------------------------------->
+	-------------------------------------------------------------------------------------------------------------------->
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
