@@ -8,7 +8,7 @@
 
 /**
  * Function: getBook
- * Description: Searches for a single book in the database 
+ * Description: Searches for a single book in the database
  * with a mathcing isbn and returns the row for that book.
  * @param isbn - the isbn of the book to return.
  * @return book - the book from the database with the isbn givin in the parameter.
@@ -16,7 +16,7 @@
 function getBook ($isbn) {
     require "dbconnect.php";
     $query = "SELECT * FROM books WHERE isbn = '$isbn'";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($connection, $query);
     $book = $result->fetch_assoc();
     // Return book
     return $book;
@@ -24,7 +24,7 @@ function getBook ($isbn) {
 
 /**
  * Function: getBooks
- * Description: Searches for eight books in the database 
+ * Description: Searches for eight books in the database
  * with mathcing isbns and returns the rows for the books.
  * @param isbn - the isbn of the book to return.
  * @return books - An array of books that match the isbn provided.
@@ -32,7 +32,7 @@ function getBook ($isbn) {
 function getBooks ($isbn1, $isbn2, $isbn3, $isbn4, $isbn5, $isbn6, $isbn7, $isbn8) {
     require "dbconnect.php";
     // List of books to retrieve from database
-    $query = "SELECT * FROM books 
+    $query = "SELECT * FROM books
     WHERE isbn = '$isbn1'
        OR isbn = '$isbn2'
        OR isbn = '$isbn3'
@@ -41,7 +41,7 @@ function getBooks ($isbn1, $isbn2, $isbn3, $isbn4, $isbn5, $isbn6, $isbn7, $isbn
        OR isbn = '$isbn6'
        OR isbn = '$isbn7'
        OR isbn = '$isbn8'";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($connection, $query);
 
     // Get the first book
     $row = $result->fetch_assoc();
@@ -56,3 +56,5 @@ function getBooks ($isbn1, $isbn2, $isbn3, $isbn4, $isbn5, $isbn6, $isbn7, $isbn
     // Return books
     return $books;
 }
+
+?>

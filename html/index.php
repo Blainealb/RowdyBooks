@@ -27,8 +27,8 @@ $banner_book2_title = $book['title'];
 $banner_book2_cover = $book['image_path'];
 
 // Retrieve the Category Covers
-$category = getBooks("999-1234567890", "999-0000000002", "999-1234567890", 
-"999-1234567890","999-1234567890", "999-1234567890", 
+$category = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
+"999-1234567890","999-1234567890", "999-1234567890",
 "999-1234567890", "999-1234567890");
 $category1_cover = $category[0]['image_path'];
 $category2_cover = $category[1]['image_path'];
@@ -40,8 +40,8 @@ $category7_cover = $category[6]['image_path'];
 $category8_cover = $category[7]['image_path'];
 
 // Retrieve the Recently Viewed Books
-$books = getBooks("999-1234567890", "999-0000000002", "999-1234567890", 
-"999-1234567890","999-1234567890", "999-1234567890", 
+$books = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
+"999-1234567890","999-1234567890", "999-1234567890",
 "999-1234567890", "999-1234567890");
 $recent_book1_title = $books[0]['title'];
 $recent_book1_cover = $books[0]['image_path'];
@@ -836,7 +836,7 @@ $recent_book8_cover = $books[7]['image_path'];
 			</div>
 		</div>
 	<!-- end product Area -->
-														<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>yle="margin-left:
+
 	<!--------------------------- Modifications by Kaleb Phillips: Footer Area -------------------------------
 		* Updated text for About Us section to a placeholder.
 		* Removed newsletter forom.
