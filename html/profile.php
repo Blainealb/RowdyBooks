@@ -169,7 +169,7 @@ $userEmail = $_SESSION['email'];
 			<div class="sidebar-categories">
                                         <div class="head">Profile Options</div>
                                         <ul class="main-categories">
-                                                <li class="main-nav-list"><a href="#"><span 
+                                                <li class="main-nav-list"><a href="edit-profile.php"><span 
                                                                  class="lnr lnr-arrow-right"></span>Edit Profile</a>
                                                 </li>
                                                 <li class="main-nav-list"><a href="#"><span 
