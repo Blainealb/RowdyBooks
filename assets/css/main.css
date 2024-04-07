@@ -4681,15 +4681,15 @@ label {
 
 .order_details .title_confirmation {
   text-align: center;
-  color: #28d500;
-  font-size: 18px;
+  color: var(--text-color);
+  font-size: 24px;
   margin-bottom: 80px; }
 
 .order_d_inner .details_item h4 {
   border-bottom: 1px solid #eee;
   padding-bottom: 12px;
   font-size: 18px;
-  color: #222222;
+  color: var(--text-color);
   padding-left: 18px; }
 .order_d_inner .details_item .list {
   padding-left: 18px; }
@@ -4702,12 +4702,12 @@ label {
       margin-bottom: 0px; }
     .order_d_inner .details_item .list li a {
       font-size: 14px;
-      color: #222222;
+      color: var(--text-color);
       font-family: "Roboto", sans-serif; }
       .order_d_inner .details_item .list li a span {
         width: 145px;
         display: inline-block;
-        color: #777777; }
+        color: var(--text-color); }
 
 .order_details_table {
   background: #e5ecee;

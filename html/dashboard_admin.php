@@ -2,7 +2,7 @@
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/  
-	code modified by @author Kaleb Phillips
+	code modified by @author Diego Aguirre Guerra
 -->
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -54,36 +54,40 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
+								 aria-expanded="false">Shop New</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Blog</a>
+								 aria-expanded="false">Trade Market</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+									<li class="nav-item"><a class="nav-link" href="blog.html">Trade</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-blog.html">Trade In</a></li>
 								</ul>
 							</li>
-							<li class="nav-item submenu dropdown active">
+							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
+								 aria-expanded="false">Admin</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-									<li class="nav-item active"><a class="nav-link" href="html/tracking.html">Tracking</a></li>
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+									<li class="nav-item"><a class="nav-link" href="dashboard_admin.php">DashBoard</a></li>
+									<li class="nav-item"><a class="nav-link" href="addNewBook_admin.php">Products</a></li>
+									<li class="nav-item"><a class="nav-link" href="orders_admin.php">Orders</a></li>
+									<li class="nav-item"><a class="nav-link" href="users_admin.php">Users</a></li>
+									<li class="nav-item"><a class="nav-link" href="Messages_admin.php">Messages</a></li>
 								</ul>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li class="nav-item submenu dropdown">
+                                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                                 aria-expanded="false">My Account</a>
+                                                                <ul class="dropdown-menu">
+                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                                                        <li class="nav-item"><a class="nav-link" href="contact.php">Profile</a></li>
+                                                                </ul>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
@@ -112,10 +116,10 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Order Tracking</h1>
+                    <h1>DashBoard</h1>
                     <nav class="d-flex align-items-center">
                         <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Fashon Category</a>
+                        <a href="category.html">DashBoard</a>
                     </nav>
                 </div>
             </div>
@@ -123,27 +127,77 @@
     </section>
     <!-- End Banner Area -->
 
-    <!--================Tracking Box Area =================-->
-    <section class="tracking_box_area section_gap">
-        <div class="container">
-            <div class="tracking_box_inner">
-                <p>To track your order please enter your Order ID in the box below and press the "Track" button. This
-                    was given to you on your receipt and in the confirmation email you should have received.</p>
-                <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="order" name="order" placeholder="Order ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Billing Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Billing Email Address'">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <button type="submit" value="submit" class="primary-btn">Track Order</button>
-                    </div>
-                </form>
+    <!--================Add New Product=================-->
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h1 class="display-3">DASHBOARD</h1>
             </div>
         </div>
-    </section>
-    <!--================End Tracking Box Area =================-->
+        <div class="row">
+            <!-- Total Pendings -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Total Pendings</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">$122/-</div>
+                </div>
+            </div>
+            <!-- Completed Payments -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Completed Payments</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">$0/-</div>
+                </div>
+            </div>
+            <!-- Order Placed -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Order Placed</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">1</div>
+                </div>
+            </div>
+            <!-- Products Added -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Products Added</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">8</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Normal Users -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Normal Users</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">2</div>
+                </div>
+            </div>
+            <!-- Admin Users -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Admin Users</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">1</div>
+                </div>
+            </div>
+            <!-- Total Accounts -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">Total Accounts</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">3</div>
+                </div>
+            </div>
+            <!-- New Messages -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="d-flex justify-content-center align-items-center flex-column p-4 text-dark" style="height: 200px; background-color: #f15a22; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <h4 class="mb-2">New Messages</h4>
+                    <div class="display-4" style="font-size: 2.5rem;">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!--================End Add New Product=================-->
 
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
@@ -248,3 +302,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </body>
 
 </html>
+
