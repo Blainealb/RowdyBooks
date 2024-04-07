@@ -69,7 +69,7 @@ $recent_book8_cover = $books[7]['image_path'];
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="/assets/img/fav.png">
+	<link rel="shortcut icon" href="../assets/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="CodePixar">
 	<!-- Meta Description -->
