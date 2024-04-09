@@ -10,7 +10,23 @@ session_start();
 /*-------------------------------------- Modifications by Kaleb Phillips: PHP --------------------------------------------------
         * Added functions for retrieving books from database.
         * Added variables to store book titles and covers.
+	* Added array for page changing buttuns in the category area filter bar.
+	* Added array for page changing buttuns in the recent viewed filter bar.
 --------------------------------------------------------------------------------------------------------------------------------*/
+
+// Holds the data for page changing buttuns in category area
+$category_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"category");
+
+// Holds the data for page changing buttuns in recent viewed area
+$recent_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"recent");
 
 // Retrieve Products from Database
 require "bookFunctions.php";
@@ -258,6 +274,7 @@ $recent_book8_cover = $books[7]['image_path'];
 		* Updated color of filter bar to orange.
 		* Updated color of selected page number in filter bar to blue.
 		* Removed extra prd-buttons from below categories.
+		* Added functionality for page changing buttons in filter bar.
 	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Category Area -->
@@ -277,13 +294,37 @@ $recent_book8_cover = $books[7]['image_path'];
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="category_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="category_button1" onclick="category_direct('button1')" class="<?php echo $category_pages["button1"] ?>"><?php echo $category_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="category_button2" onclick="category_direct('button2')" class="<?php echo $category_pages["button2"] ?>"><?php echo $category_pages["display2"] ?></a>
+								<a type="button" id="category_button3" onclick="category_direct('button3')" class="<?php echo $category_pages["button3"] ?>"><?php echo $category_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="category_button4" onclick="category_direct('button4')" class="<?php echo $category_pages["button4"] ?>"><?php echo $category_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="category_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
+
+								<!-- Start Page Script -->
+								<script type="text/javascript" src="../js/pageFunctions.js"></script>
+								<script>
+									// Get the PHP page arrey and save as JavaScript array
+									category_array = <?php echo json_encode($category_pages) ?>
+
+									// Previous arraow button function
+									function category_prev () {
+										prevPage(category_array)
+									}
+									// Next arraow button function
+									function category_next () {
+										nextPage(category_array)
+									}
+									// Direct page button function
+									function category_direct(button) {
+										directPage(category_array, button)
+									}
+								</script>
+								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -457,13 +498,16 @@ $recent_book8_cover = $books[7]['image_path'];
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="category_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button1" onclick="category_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $category_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button2" onclick="category_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $category_pages["display2"] ?></a>
+								<a type="button" id="below_category_button3" onclick="category_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $category_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button4" onclick="category_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $category_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="category_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -483,6 +527,7 @@ $recent_book8_cover = $books[7]['image_path'];
 		* Added filter bar above and below recently viewed from the category page.
 		* Updated color of filter bar to orange.
 		* Updated color of selected page number in filter bar to blue.
+		* Added functionality for page changing buttons in filter bar.
 	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Recently Viewed Area -->
@@ -502,13 +547,37 @@ $recent_book8_cover = $books[7]['image_path'];
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="recent_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button1" onclick="recent_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $recent_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button2" onclick="recent_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $recent_pages["display2"] ?></a>
+								<a type="button" id="recent_button3" onclick="recent_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $recent_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button4" onclick="recent_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $recent_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="recent_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
+
+								<!-- Start Page Script -->
+								<script type="text/javascript" src="../js/pageFunctions.js"></script>
+								<script>
+									// Get the PHP page arrey and save as JavaScript array
+									recent_array = <?php echo json_encode($recent_pages) ?>
+
+									// Previous arraow button function
+									function recent_prev () {
+										prevPage(recent_array)
+									}
+									// Next arraow button function
+									function recent_next () {
+										nextPage(recent_array)
+									}
+									// Direct page button function
+									function recent_direct(button) {
+										directPage(recent_array, button)
+									}
+								</script>
+								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -818,13 +887,16 @@ $recent_book8_cover = $books[7]['image_path'];
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="recent_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button1" onclick="recent_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $recent_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button2" onclick="recent_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $recent_pages["display2"] ?></a>
+								<a type="button" id="below_recent_button3" onclick="recent_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $recent_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button4" onclick="recent_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $recent_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="recent_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->

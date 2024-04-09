@@ -3171,6 +3171,10 @@ label {
     .sorting .nice-select .list {
       border-radius: 0px; }
 
+/*-------------------------------------- Modifications by Kaleb Phillips: Pagination Class --------------------------------------
+		* Addaed inactive class to set color of numbers on buttons.
+-------------------------------------------------------------------------------------------------------------------------------*/
+
 .pagination {
   margin-top: 10px;
   border-left: 1px solid #eee;
@@ -3184,6 +3188,8 @@ label {
     .pagination a.active {
       background: var(--secondary-color);
       color: #fff; }
+    .pagination a.inactive {
+      color: #000; }
     .pagination a:hover {
       background: var(--secondary-color);
       color: #fff; }
