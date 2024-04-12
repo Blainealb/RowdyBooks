@@ -5,8 +5,44 @@
 	code modified by @author Kaleb Phillips
 -->
 <?php
+require "dbconnect.php";
 session_start();
+
+// Check if user is logged in and if they are get the user ID from the session
+if(isset($_SESSION['userid'])) {
+	$id = $_SESSION['userid'];
+	$loggedin = true;
+}
+else {
+	$loggedin = false;
+}
+
+/*-------------------------------------- Modifications by Kaleb Phillips: PHP --------------------------------------------------
+	* Added functions for retrieving books from database.
+	* Added variables to store book titles and covers.
+--------------------------------------------------------------------------------------------------------------------------------*/
+
+// Retrieve Products from Database
+require "bookFunctions.php";
+require "dbconnect.php";
+
+// Retrieve the books in the user's cart
+$cart = getCartBooks("$id");
+$cart_book1_title = $cart[0]['title'];
+$cart_book1_cover = $cart[0]['image_path'];
+$cart_book1_isbn = $cart[0]['isbn'];
+$cart_book1_price = $cart[0]['price'];
+$cart_book2_title = $cart[1]['title'];
+$cart_book2_cover = $cart[1]['image_path'];
+$cart_book2_isbn = $cart[1]['isbn'];
+$cart_book2_price = $cart[1]['price'];
+$cart_book3_title = $cart[2]['title'];
+$cart_book3_cover = $cart[2]['image_path'];
+$cart_book3_isbn = $cart[2]['isbn'];
+$cart_book3_price = $cart[2]['price'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -48,7 +84,7 @@ session_start();
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- Logo -->
-                                        <a class="navbar-brand logo_h" href="./">RowdyBooks</a>
+                    			<a class="navbar-brand logo_h" href="./">RowdyBooks</a>
 					<a class="navbar-brand logo_h" href="index.php"><img src="img/logo.png" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,22 +120,17 @@ session_start();
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
-                                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                 aria-expanded="false">My Account</a>
-                                                                <ul class="dropdown-menu">
-                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                                                                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                                                                </ul>
-                                                        </li>
+                                    				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                        			 aria-expanded="false">My Account</a>
+                                    				<ul class="dropdown-menu">
+                                            				<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                            				<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                                    				</ul>
+                            				</li>
 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 						<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-                                                        <!-- Button to open search bar -->
-                                                        <!--
-                                                        <li class="nav-item">
-                                                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                                                        </li>-->
 						</ul>
 					</div>
 				</div>
@@ -112,14 +143,11 @@ session_start();
                                         <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
                                         <input type="text" class="form-control" id="search_input" placeholder="Search">
                                         <button type="submit" class="btn"></button>
-                                        <!-- Button to hide the search bar -->
-                                        <!--<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>-->
-
 				</form>
 			</div>
 		</div>
 	</header>
-	<!-- End Header Area -->
+    <!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -138,15 +166,43 @@ session_start();
     <!-- End Banner Area -->
 
 
-   	<!-------------------------------------- Modifications by Loren Isenhour: Cart Area --------------------------------------------
-		* Added book picture placeholder for the each product
-		* Adjusted overall checkout table formatting
-	--------------------------------------------------------------------------------------------------------------------------------->
+    <!-------------------------------------- Modifications by Loren Isenhour: Cart Area --------------------------------------------
+	* Added book picture placeholder for the each product
+	* Adjusted overall checkout table formatting
+    --------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-------------------------------------- Modifications by Kaleb Phillips: Cart Area --------------------------------------------
+        * Added functionality for displaying book titles and covers from the database.
+	* Added message and button to prompt the user to lgin if they are not currently.
+        * Added functionality to show and hide login message.
+        * Added message and button to indicate that the cart is empty if there are no books in it currently.
+        * Added functionality to show and hide empty cart message.
+        * Added functionality to show and hide table rows for books depending on the number of books in the cart.
+        * Added button to remove books from cart and implemented the functionality for removing books.
+        * Added extra comments.
+    --------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-- Start Cart Area -->
     <section class="cart_area" style="margin-top: -150px;">
         <div class="container">
+            <!-- Login message and login page button -->
+            <div id="loginMessage" style="text-align: center; display: none;">
+                <h1> Your Are Not Logged In </h1>
+                <h1> Please log in to access your cart </h1>
+                <br>
+                <a href="login.php" type="button" class="genric-btn primary large" style="font-size : 20px; color: var(--primary_color)">Login</a>
+            </div>
+            <!-- Empty cart message and shop page button -->
+            <div id="emptyCart" style="text-align: center; display: none;">
+                <h1> Your Cart is Empty </h1>
+                <br>
+                <a href="category.php" type="button" class="genric-btn primary large" style="font-size : 20px; color: var(--primary_color)">Shop For Books To Add</a>
+            </div>
+
+            <!-- Cart column headers -->
             <div class="cart_inner">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="cartTable" class="table">
                         <thead>
                             <tr>
                                 <th scope="col"><h4>Product</h4></th>
@@ -156,23 +212,25 @@ session_start();
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- Cart table 1 -->
+                            <tr id="table1">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <svg width="75" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="75" height="100" x="" y="" fill="var(--secondary-color3)" />
-                                            </svg>
+                                            <img id="book1_cover" class="img-fluid" style="width: 75px; height: 100px;" 
+                                                src="../assets/img/product/<?php echo $cart_book1_cover; ?>" 
+                                                alt="">
                                         </div>
-                                        <div class="media-body">
-                                            <p><i>Book 1 Title</i></p>
+                                        <div id="book1_title" class="media-body">
+                                            <p><i><?php echo $cart_book1_title ?></i></p>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <h6>$360.00</h6>
+                                <td  id="book1_price">
+                                    <h6><?php echo $cart_book1_price ?></h6>
                                 </td>
                                 <td>
+                                    <br>
                                     <div class="product_count">
                                         <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
@@ -181,28 +239,37 @@ session_start();
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
+
+                                    <div>
+                                        <br>
+                                        <!-- Cart table 1 remove button -->
+                                        <a type="button" class="genric-btn primary small" onclick="remove('button1', book1_isbn)" style="color: var(--primary_color)">Remove</a>
+                                    </div>
                                 </td>
-                                <td>
-                                    <h6>$720.00</h6>
+
+                                <td id="book1_total_price">
+                                    <h6><?php echo $cart_book1_price ?></h6>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- Cart table 2 -->
+                            <tr id="table2">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <svg width="75" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="75" height="100" x="" y="" fill="var(--secondary-color3)" />
-                                            </svg>
+                                            <img id="book2_cover" class="img-fluid" style="width: 75px; height: 100px;" 
+                                                src="../assets/img/product/<?php echo $cart_book2_cover; ?>" 
+                                                alt="">
                                         </div>
-                                        <div class="media-body">
-                                            <p><i>Book 2 Title</i></p>
+                                        <div id="book2_title" class="media-body">
+                                            <p><i><?php echo $cart_book2_title ?></i></p>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <h6>$360.00</h6>
+                                <td id="book2_price">
+                                    <h6><?php echo $cart_book2_price ?></h6>
                                 </td>
                                 <td>
+                                    <br>
                                     <div class="product_count">
                                         <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
@@ -211,28 +278,36 @@ session_start();
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
+
+                                    <div>
+                                        <br>
+                                        <!-- Cart table 2 remove button -->
+                                        <a type="button" class="genric-btn primary small" onclick="remove('button2', book2_isbn)" style="color: var(--primary_color)">Remove</a>
+                                    </div>
                                 </td>
-                                <td>
-                                    <h6>$720.00</h6>
+                                <td id="book2_total_price">
+                                    <h6><?php echo $cart_book2_price ?></h6>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- Cart table 3 -->
+                            <tr id="table3">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <svg width="75" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="75" height="100" x="" y="" fill="var(--secondary-color3)" />
-                                            </svg>
+                                            <img id="book3_cover" class="img-fluid" style="width: 75px; height: 100px;" 
+                                                src="../assets/img/product/<?php echo $cart_book3_cover; ?>" 
+                                                alt="">
                                         </div>
-                                        <div class="media-body">
-                                            <p><i>Book 3 Title</i></p>
+                                        <div id="book3_title" class="media-body">
+                                            <p><i><?php echo $cart_book3_title ?></i></p>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <h6>$360.00</h6>
+                                <td id="book3_price">
+                                    <h6><?php echo $cart_book3_price ?></h6>
                                 </td>
                                 <td>
+                                    <br>
                                     <div class="product_count">
                                         <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
@@ -241,9 +316,15 @@ session_start();
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
+
+                                    <div>
+                                        <br>
+                                        <!-- Cart table 3 remove button -->
+                                        <a type="button" class="genric-btn primary small" onclick="remove('button3', book3_isbn)" style="color: var(--primary_color)">Remove</a>
+                                    </div>
                                 </td>
-                                <td>
-                                    <h6>$720.00</h6>
+                                <td id="book3_total_price">
+                                    <h6><?php echo $cart_book3_price ?></h6>
                                 </td>
                             </tr>
                             <tr class="bottom_button">
@@ -255,7 +336,7 @@ session_start();
                                     <h6>Subtotal</h6>
                                 </td>
                                 <td>
-                                    <h6>$2160.00</h6>
+                                    <h6><?php echo $cart_book1_price + $cart_book2_price + $cart_book3_price ?></h6>
                                 </td>
                             </tr>
                             <tr>
@@ -268,11 +349,11 @@ session_start();
                                 </td>
                                 <td>
                                 </td>
-                                <td>
+                             	<td>
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="category.php">Continue Shopping</a>
+                                        <a class="gray_btn" style="white-space: nowrap;" href="category.php">Continue Shopping</a>
                                         <a class="primary-btn" href="checkout.php">Proceed to checkout</a>
                                     </div>
                                 </td>
@@ -287,7 +368,7 @@ session_start();
 
 
     <!-- start footer Area -->
-   <footer class="footer-area section_gap">
+    <footer class="footer-area section_gap">
                 <div class="container">
                         <div class="row">
                                 <div class="col-lg-3  col-md-6 col-sm-6">
@@ -307,17 +388,140 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         </div>
                 </div>
         </footer>
- 
+
     <!-- End footer Area -->
 
-    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+    <!-------------------------------------- Modifications by Kaleb Phillips: JavaScript -------------------------------------------
+        * Added functionality for displaying book titles and covers from the database.
+	* Added variables to store book info and retrieve it from php variables.
+	* Added variable to store login status and retrieve it from php the variable.
+        * Added a functino to remove books when the remove button is clicked.
+        * Added ajax to update the cart database after removing a book from the cart.
+        * Added a function for hiding table rows that don't have books.
+        * Added a function for hidding all table rows.
+        * Added checks for empty table rows.
+        * Added functionality to determine user login status and display or hide a message accordingly.
+        * Added function to determine if the cart is empty display or hide a message accordingly.
+    --------------------------------------------------------------------------------------------------------------------------------->
+
+    <script>
+
+        // Books
+        var book1_title = <?php echo json_encode($cart_book1_title); ?>;
+        var book1_cover = <?php echo json_encode($cart_book1_cover); ?>;
+        var book1_isbn = <?php echo json_encode($cart_book1_isbn); ?>;
+	var book1_price = <?php echo json_encode($cart_book1_price); ?>;
+        var book2_title = <?php echo json_encode($cart_book2_title); ?>;
+        var book2_cover = <?php echo json_encode($cart_book2_cover); ?>;
+        var book2_isbn = <?php echo json_encode($cart_book2_isbn); ?>;
+	var book2_price = <?php echo json_encode($cart_book2_price); ?>;
+        var book3_title = <?php echo json_encode($cart_book3_title); ?>;
+        var book3_cover = <?php echo json_encode($cart_book3_cover); ?>;
+        var book3_isbn = <?php echo json_encode($cart_book3_isbn); ?>;
+	var book3_price = <?php echo json_encode($cart_book3_price); ?>;
+
+        // Loggedin status
+        loggedin = <?php echo json_encode($loggedin); ?>;
+
+
+        // Hide cart table elements with empty book slots
+        if (book1_title == null) {
+            // Hide the table for the first book
+            hideTable("table1");
+        }
+        if (book2_title == null) {
+            // Hide the table for the second book
+            hideTable("table2");
+        }
+        if (book3_title == null) {
+            // Hide the table for the third book
+            hideTable("table3");
+        }
+
+        // Check if the user is logged in
+        if (loggedin == false) {
+            // Show log in message
+            document.getElementById("loginMessage").style = "text-align: center; display: block";
+            // Show empty cart message
+            document.getElementById("emptyCart").style = "text-align: center; display: none";
+            // Hide the table for the cart
+            document.getElementById("cartTable").style = "text-align: center; display: none"; 
+        }
+
+        /**
+         * Function: remove
+         * Description: Uses ajax to remove a book from a user's cart in the database
+         * and hides the row of the book that was removed from the cart.
+         * @param button - the remove button that was clicked on.
+         * @param isbn - the isbn of the book to remove.
+         */
+        function remove(button, isbn) {
+            var user = <?php echo json_encode($id); ?>;
+
+            $.ajax({
+                url:"bookFunctions.php",
+                type: "post",
+                dataType: 'json',
+                data: {remove: isbn, userid: user},
+                success:function(result){
+                    console.log(result.abc);
+                }
+            });
+
+            // Update the books displayed in cart
+            if (button == 'button1') {
+                // Hide the table for the first book
+                book1_title = null;
+                hideTable("table1");
+            }
+            else if (button == 'button2') {
+                // Hide the table for the second book
+                book2_title = null;
+                hideTable("table2");
+            }
+            else if (button == 'button3') {
+                // Hide the table for the third book
+                book3_title = null;
+                hideTable("table3");
+            }
+        }
+
+        /**
+         * Function: hideTable
+         * Description: Hides the table row of table row id passed in
+         * and checks to see if the cart is now empty.
+         * @param table - the id of the table row to hide.
+         */
+        function hideTable (table) {
+            document.getElementById(table).style = "display: none";
+            // Check if cart is empty
+            cartIsEmpty();
+        }
+
+         /**
+         * Function: cartIsEmpty
+         * Description: Checks if the cart is empty and hides the
+         * table and displays the empty cart message accordingly.
+         */
+        function cartIsEmpty () {
+            // If the cart is empty
+            if (book1_title == null && book2_title == null && book3_title == null && loggedin == true) {
+                // Show empty cart message
+                document.getElementById("emptyCart").style = "text-align: center; display: block";
+                // Hide the table for the cart
+                document.getElementById("cartTable").style = "text-align: center; display: none";            
+            }
+        }
+    </script>
+
+    	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
 	<script src="../js/vendor/bootstrap.min.js"></script>
 	<script src="../js/jquery.ajaxchimp.min.js"></script>
 	<script src="../js/jquery.nice-select.min.js"></script>
 	<script src="../js/jquery.sticky.js"></script>
-    <script src="../js/nouislider.min.js"></script>
+    	<script src="../js/nouislider.min.js"></script>
 	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<script src="../js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->

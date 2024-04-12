@@ -88,6 +88,7 @@ if(array_key_exists('verify', $_POST)) {
 	    	echo "You are not logged in";
 	    }
 	}
+
 }
 
 ?>
@@ -131,7 +132,8 @@ if(array_key_exists('verify', $_POST)) {
 
 </div> <!-- /form -->
 <!-- partial -->
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../js/login_script.js"></script>
+<<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<<script src="../js/login_script.js"></script>
 
 </body>
 </html>

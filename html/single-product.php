@@ -5,7 +5,29 @@
 	code modified by @author Kaleb Phillips
 -->
 <?php
-session_start();
+	session_start();
+
+	include 'dbconnect.php';
+
+	if (isset($_GET['book']) && is_numeric($_GET['book'])) {
+		$bookId = intval($_GET['book']);
+
+		$stmt = $connection->prepare("SELECT title, author_name, isbn, category, description, image_path, price, publish_date, version, pages, type, dimensions, publisher FROM books WHERE id_books = ?");
+		$stmt->bind_param("i", $bookId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			$bookDetails = $result->fetch_assoc();
+		} else {
+			echo "<p>Book not found.</p>";
+		}
+		$stmt->close();
+	} else {
+		echo "<p>No book specified.</p>";
+	}
+
+	mysqli_close($connection);
 ?>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -146,57 +168,27 @@ session_start();
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-						<!--  Product image begin -->
-							<div class="item">
-								<div class="banner-img">
-									<svg width="400" height="550" xmlns="http://www.w3.org/2000/svg">
-										<rect width="400" height="550" x="" y="" fill="var(--secondary-color3)" />
-									</svg>
-								</div>
-							</div>
-						<!--  product image end -->
-						</div>
-						<div class="single-prd-item">
-						<!-- Product image begin -->
-							<div class="item">
-								<div class="banner-img">
-									<svg width="400" height="550" xmlns="http://www.w3.org/2000/svg">
-										<rect width="400" height="550" x="" y="" fill="var(--secondary-color3)" />
-									</svg>
-								</div>
-							</div>
-						<!--  product image end -->
-						</div>
-						<div class="single-prd-item">
-						<!-- Product image begin -->
-							<div class="item">
-								<div class="banner-img">
-									<svg width="400" height="550" xmlns="http://www.w3.org/2000/svg">
-										<rect width="400" height="550" x="" y="" fill="var(--secondary-color3)" />
-									</svg>
-								</div>
-							</div>
-						<!-- Product image end -->
+				<!--  Product image begin -->
+					<div class="item" style="max-width:400px; max-height:550">
+						<div class="banner-img" style="max-width:400px; max-height:550"> 
+							<image width="400" height="550" src="../assets/img/product/<?php echo $bookDetails['image_path']; ?>" alt=""/>
 						</div>
 					</div>
+				<!--  product image end -->
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<!-- Product Details begin -->
 					<div class="s_product_text">
-						<h3>Book 1 Title</h3>
+						<h3><?php echo $bookDetails['title']; ?></h3>
 						<h2>$49.99</h2>
 						<ul class="list">
-							<li>Category&nbsp;: &nbsp; STEM</li>
-							<li>Type&nbsp;: &nbsp; E-Book</li>
+							<li>Category&nbsp;: &nbsp; <?php echo $bookDetails['category']; ?></li>
+							<li>Type&nbsp;: &nbsp; <?php echo $bookDetails['type']; ?></li>
 							<li>Availibility&nbsp;: &nbsp; In Stock</li>
 						</ul>
-						<p>This book provides a comprehensive overview of the foundational concepts in Computer
-							science. Designed for students with little to no prior experience in informatics, this
-							textbook covers a broad range of topics essential to understanding the discipline.
+						<p><?php echo $bookDetails['description']; ?>
 						</p>
-						<div class="product_count">
+<!---------						<div class="product_count">
 							<label for="qty">Quantity:</label>
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
@@ -204,13 +196,15 @@ session_start();
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
+------>
 						<div class="card_area d-flex align-items-center">
 							<a class="primary-btn" href="#">Add to Cart</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+<!-------Removed for now							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
 					</div>
-					<!-- Product Details end -->
+----------------------->			
+				<!-- Product Details end -->
 				</div>
 			</div>
 		</div>
@@ -235,18 +229,16 @@ session_start();
 					<a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
 					 aria-selected="false">Details</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" id="sellercomments-tab" data-toggle="tab" href="#sellercomments" role="tab" aria-controls="sellercomments"
 					 aria-selected="false">Seller Comments</a>
-				</li>
+				</li> -->
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>Title <t> : </t> <i>Introduction to Computer Science: A Textbook for Beginners in Informatics</i> </p>
-					<p>Author <t> : </t> Unknown</p>
-					<p>Description <t> : </t> This book provides a comprehensive overview of the foundational concepts in Computer
-						science. Designed for students with little to no prior experience in informatics, this
-						textbook covers a broad range of topics essential to understanding the discipline. 
+					<p>Title <t> : </t> <i><?php echo $bookDetails['title']; ?></i> </p>
+					<p>Author <t> : </t> <?php echo $bookDetails['author_name']; ?></p>
+					<p>Description <t> : </t> <?php echo $bookDetails['description']; ?>
 					</p>
 				</div>
 				<div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
@@ -258,7 +250,7 @@ session_start();
 										<h5>ISBN</h5>
 									</td>
 									<td>
-										<h5>9780003136170</h5>
+										<h5><?php echo $bookDetails['isbn']; ?></h5>
 									</td>
 								</tr>
 								<tr>
@@ -266,7 +258,7 @@ session_start();
 										<h5>Publisher</h5>
 									</td>
 									<td>
-										<h5>Amber Byte Press</h5>
+										<h5><?php echo $bookDetails['publisher']; ?></h5>
 									</td>
 								</tr>
 								<tr>
@@ -274,31 +266,31 @@ session_start();
 										<h5>Publish Date</h5>
 									</td>
 									<td>
-										<h5>03/14/2020</h5>
+										<h5><?php echo $bookDetails['publish_date']; ?></h5>
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										<h5>Sold BY</h5>
 									</td>
 									<td>
 										<h5>rbuser993</h5>
 									</td>
-								</tr>
-								<tr>
+								</tr> -->
+								<!-- <tr>
 									<td>
 										<h5>New / Used</h5>
 									</td>
 									<td>
 										<h5>N/A</h5>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td>
 										<h5>Version</h5>
 									</td>
 									<td>
-										<h5>2.3</h5>
+										<h5><?php echo $bookDetails['version']; ?></h5>
 									</td>
 								</tr>
 
@@ -307,7 +299,7 @@ session_start();
 										<h5>Pages</h5>
 									</td>
 									<td>
-										<h5>456</h5>
+										<h5><?php echo $bookDetails['pages']; ?></h5>
 									</td>
 								</tr>
 								<tr>
@@ -315,38 +307,38 @@ session_start();
 										<h5>Type</h5>
 									</td>
 									<td>
-										<h5>E-Book</h5>
+										<h5><?php echo $bookDetails['type']; ?></h5>
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										<h5>Required / Optional</h5>
 									</td>
 									<td>
 										<h5>Required</h5>
 									</td>
-								</tr>
-								<tr>
+								</tr> -->
+								<!-- <tr>
 									<td>
 										<h5>Chapters Read</h5>
 									</td>
 									<td>
 										<h5>Chapters: 1, 2, 6, 7, and 12</h5>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td>
 										<h5>Dimensions / File Size</h5>
 									</td>
 									<td>
-										<h5>980 KB</h5>
+										<h5><?php echo $bookDetails['dimensions']; ?></h5>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="sellercomments" role="tabpanel" aria-labelledby="sellercomments-tab">
+				<!-- <div class="tab-pane fade" id="sellercomments" role="tabpanel" aria-labelledby="sellercomments-tab">
 					<div class="row">
 						<div class="col-lg-8">
 							<div class="comment_list"> 
@@ -374,7 +366,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>

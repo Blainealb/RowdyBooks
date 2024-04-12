@@ -7,9 +7,18 @@
 <?php
 session_start();
 
+// Check if user is logged in and if they are get the userid from the session
+if(isset($_SESSION['userid'])) {
+	$id = $_SESSION['userid'];
+	$loggedin = true;
+}
+else {
+	$loggedin = false;
+}
+
 /*-------------------------------------- Modifications by Kaleb Phillips: PHP --------------------------------------------------
-        * Added functions for retrieving books from database.
-        * Added variables to store book titles and covers.
+	* Added functions for retrieving books from database.
+	* Added variables to store book titles and covers.
 	* Added array for page changing buttuns in the category area filter bar.
 	* Added array for page changing buttuns in the recent viewed filter bar.
 --------------------------------------------------------------------------------------------------------------------------------*/
@@ -44,8 +53,8 @@ $banner_book2_cover = $book['image_path'];
 
 // Retrieve the Category Covers
 $category = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
-"999-1234567890","999-1234567890", "999-1234567890",
-"999-1234567890", "999-1234567890");
+"999-1234567891","999-1234567892", "999-1234567893",
+"999-1234567894", "999-1234567895");
 $category1_cover = $category[0]['image_path'];
 $category2_cover = $category[1]['image_path'];
 $category3_cover = $category[2]['image_path'];
@@ -56,25 +65,33 @@ $category7_cover = $category[6]['image_path'];
 $category8_cover = $category[7]['image_path'];
 
 // Retrieve the Recently Viewed Books
-$books = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
-"999-1234567890","999-1234567890", "999-1234567890",
-"999-1234567890", "999-1234567890");
+$books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
+"999-1234567893","999-1234567891", "999-1234567894",
+"999-1234567890", "999-1234567892");
 $recent_book1_title = $books[0]['title'];
 $recent_book1_cover = $books[0]['image_path'];
+$recent_book1_isbn = $books[0]['isbn'];
 $recent_book2_title = $books[1]['title'];
 $recent_book2_cover = $books[1]['image_path'];
+$recent_book2_isbn = $books[1]['isbn'];
 $recent_book3_title = $books[2]['title'];
 $recent_book3_cover = $books[2]['image_path'];
+$recent_book3_isbn = $books[2]['isbn'];
 $recent_book4_title = $books[3]['title'];
 $recent_book4_cover = $books[3]['image_path'];
+$recent_book4_isbn = $books[3]['isbn'];
 $recent_book5_title = $books[4]['title'];
 $recent_book5_cover = $books[4]['image_path'];
+$recent_book5_isbn = $books[4]['isbn'];
 $recent_book6_title = $books[5]['title'];
 $recent_book6_cover = $books[5]['image_path'];
+$recent_book6_isbn = $books[5]['isbn'];
 $recent_book7_title = $books[6]['title'];
 $recent_book7_cover = $books[6]['image_path'];
+$recent_book7_isbn = $books[6]['isbn'];
 $recent_book8_title = $books[7]['title'];
 $recent_book8_cover = $books[7]['image_path'];
+$recent_book8_isbn = $books[7]['isbn'];
 
 ?>
 
@@ -305,26 +322,6 @@ $recent_book8_cover = $books[7]['image_path'];
 								<a type="button" class="next-arrow" onclick="category_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 								<!-- End Page Buttons -->
 
-								<!-- Start Page Script -->
-								<script type="text/javascript" src="../js/pageFunctions.js"></script>
-								<script>
-									// Get the PHP page arrey and save as JavaScript array
-									category_array = <?php echo json_encode($category_pages) ?>
-
-									// Previous arraow button function
-									function category_prev () {
-										prevPage(category_array)
-									}
-									// Next arraow button function
-									function category_next () {
-										nextPage(category_array)
-									}
-									// Direct page button function
-									function category_direct(button) {
-										directPage(category_array, button)
-									}
-								</script>
-								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -340,11 +337,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category1_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 1</h6>
+								<h6>Arts and Humanities</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -360,11 +357,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category2_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 2</h6>
+								<h6>Business</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -380,11 +377,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category3_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 3</h6>
+								<h6>Health and Medicine</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -400,11 +397,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category4_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 4</h6>
+								<h6>Multi-Interdisciplinary</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -420,11 +417,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category5_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 5</h6>
+								<h6>STEM</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -440,11 +437,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category6_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 6</h6>
+								<h6>Social Sciences</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -460,11 +457,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category7_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 7</h6>
+								<h6>Computer Science</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -480,11 +477,11 @@ $recent_book8_cover = $books[7]['image_path'];
 								src="../assets/img/product/<?php echo $category8_cover; ?>" 
 								alt="">
 							<div class="product-details">
-								<h6>Book-Category 8</h6>
+								<h6>Math</h6>
 
 								<!-- Button Below Category -->
 								<div class="prd-bottom">
-									<a href="" class="social-info">
+									<a href="category.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -557,27 +554,6 @@ $recent_book8_cover = $books[7]['image_path'];
 								<a type="button" id="recent_button4" onclick="recent_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $recent_pages["display4"] ?></a>
 								<a type="button" class="next-arrow" onclick="recent_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 								<!-- End Page Buttons -->
-
-								<!-- Start Page Script -->
-								<script type="text/javascript" src="../js/pageFunctions.js"></script>
-								<script>
-									// Get the PHP page arrey and save as JavaScript array
-									recent_array = <?php echo json_encode($recent_pages) ?>
-
-									// Previous arraow button function
-									function recent_prev () {
-										prevPage(recent_array)
-									}
-									// Next arraow button function
-									function recent_next () {
-										nextPage(recent_array)
-									}
-									// Direct page button function
-									function recent_direct(button) {
-										directPage(recent_array, button)
-									}
-								</script>
-								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -589,7 +565,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book1_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -602,7 +578,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button1" onclick="addToBag(book1)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -614,7 +590,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -626,7 +602,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book2_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -639,7 +615,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button2" onclick="addToBag(book2)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -651,7 +627,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -663,7 +639,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book3_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -676,7 +652,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button3" onclick="addToBag(book3)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -688,7 +664,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -700,7 +676,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book4_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -713,7 +689,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button4" onclick="addToBag(book4)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -725,7 +701,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -737,7 +713,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book5_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -750,7 +726,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button5" onclick="addToBag(book5)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -762,7 +738,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -774,7 +750,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book6_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -787,7 +763,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button6" onclick="addToBag(book6)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -799,7 +775,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -811,7 +787,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book7_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -824,7 +800,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button7" onclick="addToBag(book7)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -836,7 +812,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -848,7 +824,7 @@ $recent_book8_cover = $books[7]['image_path'];
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							<!-- Recently Viewed Book Cover Image -->
-							<img class="img-fluid" style="width: 230px; height: 330px;" 
+							<img class="img-fluid" style="width: 230px; height: 330px;"
 								src="../assets/img/product/<?php echo $recent_book8_cover; ?>" 
 								alt="">
 							<div class="product-details">
@@ -861,7 +837,7 @@ $recent_book8_cover = $books[7]['image_path'];
 								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a type="button" id="add_to_bag_button8" onclick="addToBag(book8)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
@@ -873,7 +849,7 @@ $recent_book8_cover = $books[7]['image_path'];
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text" style="color: var(--text-color);">compare</p>
 									</a>
-									<a href="" class="social-info">
+									<a href="single-product.php" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text" style="color: var(--text-color);">view more</p>
 									</a>
@@ -936,6 +912,104 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!-- End footer Area -->
+
+	<!-------------------------------------- Modifications by Kaleb Phillips: JavaScript -------------------------------------------
+		* Added functionality for page changing buttons in filter bars of the category area.
+		* Added functionality for page changing buttons in filter bars of the recently viewed area.
+		* Added variables to store book info and retrieve it from php variables.
+		* Added a functino to add books to the cart when the add to cart button is clicked.
+        	* Added ajax to update the cart database after adding a book to the user's cart.
+	--------------------------------------------------------------------------------------------------------------------------------->
+
+	<!-- Start Category Page Button Script -->
+	<script type="text/javascript" src="../js/pageFunctions.js"></script>
+	<script>
+		// Get the PHP page arrey and save as JavaScript array
+		category_array = <?php echo json_encode($category_pages) ?>
+
+		// Previous arraow button function
+		function category_prev () {
+			prevPage(category_array)
+		}
+		// Next arraow button function
+		function category_next () {
+			nextPage(category_array)
+		}
+		// Direct page button function
+		function category_direct(button) {
+			directPage(category_array, button)
+		}
+	</script>
+	<!-- End Category Page Button Script -->
+
+	<!-- Start Recently Viewed Page Button Script -->
+	<script type="text/javascript" src="../js/pageFunctions.js"></script>
+	<script>
+		// Get the PHP page arrey and save as JavaScript array
+		recent_array = <?php echo json_encode($recent_pages) ?>
+
+		// Previous arraow button function
+		function recent_prev () {
+			prevPage(recent_array)
+		}
+		// Next arraow button function
+		function recent_next () {
+			nextPage(recent_array)
+		}
+		// Direct page button function
+		function recent_direct(button) {
+			directPage(recent_array, button)
+		}
+	</script>
+	<!-- End Recently Viewed Page Button Script -->
+
+	<!-- Start Add To Bag Script -->
+	<script type="text/javascript" src="../js/pageFunctions.js"></script><!-- Remove-->
+	<script>
+
+		// ISBN of Books
+		var book1 = <?php echo json_encode($recent_book1_isbn); ?>;
+		var book2 = <?php echo json_encode($recent_book2_isbn); ?>;
+		var book3 = <?php echo json_encode($recent_book3_isbn); ?>;
+		var book4 = <?php echo json_encode($recent_book4_isbn); ?>;
+		var book5 = <?php echo json_encode($recent_book5_isbn); ?>;
+		var book6 = <?php echo json_encode($recent_book6_isbn); ?>;
+		var book7 = <?php echo json_encode($recent_book7_isbn); ?>;
+		var book8 = <?php echo json_encode($recent_book8_isbn); ?>;
+
+		// Add to bag button function
+		function addToBag (isbn) {
+		var user = <?php echo json_encode($id); ?>;
+
+		$.ajax({
+			url:"bookFunctions.php",
+			type: "post",
+			dataType: 'json',
+			data: {add: isbn, userid: user},
+			success:function(result){
+				console.log(result.addToCart);
+				// If the book was added to the cart
+				if(result.addToCart == true) {
+					window.location.href = "cart.php";
+				}
+				// If the book is already in the cart
+				else if (result.addToCart == "exists") {
+					alert("This book is already in your cart");
+				}
+				else if(result.addToCart == "full") {
+					alert("Your cart is full");
+				}
+				// If there was an error adding to cart
+				else {
+					alert("Failed to add to the cart");
+				}
+			}
+		});
+
+	}
+	</script>
+	<!-- End Add To Bag Script -->
+
 	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -951,7 +1025,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="../js/gmaps.min.js"></script>
         <script src="../js/main.js"></script>
-
 </body>
 
 </html>

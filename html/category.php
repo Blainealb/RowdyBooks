@@ -148,28 +148,45 @@ session_start();
 		* Added picture carousel for the category banner
 		* Currently pictures are placeholders
 	--------------------------------------------------------------------------------------------------------------------------------->
+
+<?php
+include 'dbconnect.php';
+
+$sql = "SELECT image_path FROM books ORDER BY RAND() LIMIT 2";
+$result = mysqli_query($connection, $sql);
+$randomBooks = [];
+
+if (mysqli_num_rows($result) > 0) {
+    while($book = mysqli_fetch_assoc($result)) {
+        $randomBooks[] = $book;
+    }
+}
+mysqli_close($connection);
+?>
+
+
 	<section class="banner-area organic-breadcrumb">
 		<div class="container" style="margin-bottom: -40px;">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-lg-7">
-                <!-- Carousel starts -->
-                <div class="active-banner-slider owl-carousel">
+		<!-- Carousel starts -->
+		<div class="active-banner-slider owl-carousel">
+
+	<?php foreach ($randomBooks as $book): ?>
                     <!-- single-slide -->
                     <div class="item">
                         <div class="banner-img" style="margin-left: 50px;">
-                            <svg width="657" height="394" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="294" height="394" x="10" y="10" fill="var(--primary-color)" />
-                            </svg>
-                        </div>
-                    </div>
+				<img src="../assets/img/product/<?php echo htmlspecialchars($book['image_path']); ?>" alt="Book Image" style="width: 294px; height: 394px;">	
+			</div>
+		    </div>
+
                     <!-- single-slide -->
-                    <div class="item">
+                <!--    <div class="item">
                         <div class="banner-img" style="margin-left: 50px;">
-                            <svg width="657" height="394" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="294" height="394" x="10" y="10" fill="var(--secondary-color3)" />
-                            </svg>
+                            <img src="../assets/img/product/<?php echo htmlspecialchars($book['image_path']); ?>" alt="Book Image" style="width: 294px; height: 394px;">
                         </div>
-                    </div>
+		    </div> -->
+	<?php endforeach; ?>
                 </div>
                 <!-- Carousel ends -->
 				</div>
@@ -224,7 +241,7 @@ session_start();
 				</div>
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Filters</div>
-					<div class="common-filter">
+<!--------Removed option for now					<div class="common-filter">
 					<div class="head">New / Used</div>
 						<form action="#">
 							<ul>
@@ -234,7 +251,8 @@ session_start();
 							</ul>
 						</form>
 					</div>
-					<div class="common-filter">
+----------->
+<!------Removed option for now					<div class="common-filter">
 						<div class="head">Required / Optional</div>
 						<form action="#">
 							<ul>
@@ -244,6 +262,7 @@ session_start();
 							</ul>
 						</form>
 					</div>
+------->
 					<div class="common-filter">
 						<div class="head">Type</div>
 						<form action="#">
@@ -254,40 +273,42 @@ session_start();
 							</ul>
 						</form>
 					</div>
-					<div class="common-filter">
-						<div class="head">Price</div>
-						<div class="price-range-area">
-							<div id="price-range"></div>
-							<div class="value-wrapper d-flex">
-								<div class="price">Price:</div>
-								<span>$</span>
-								<div id="lower-value"></div>
-								<div class="to">to</div>
-								<span>$</span>
-								<div id="upper-value"></div>
-							</div>
-						</div>
-					</div>
+	                                <div class="common-filter">
+                                                <div class="head">Price</div>
+                                                <form action="#">
+                                                        <ul>
+                                                                <li class="filter-list"><input class="pixel-radio" type="radio" id="bookfree" name="pricefilter"><label for="bookfree">Free</label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="bookunderten" name="pricefilter"><label for="bookunderten">Under $10</label></li>
+                                                                <li class="filter-list"><input class="pixel-radio" type="radio" id="bookundertwentyfive" name="pricefilter"><label for="bookundertwentyfive">Under $25</label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="bookunderfifty" name="pricefilter"><label for="bookunderfifty">Under $50</label></li>
+                                                                <li class="filter-list"><input class="pixel-radio" type="radio" id="bookall" name="pricefilter"><label for="bookall">All</label></li>
+                                                        </ul>
+                                                </form>
+                                        </div>
+
 				</div>
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
-				<!-- Start Filter Bar -->
+
+			<!------------------------------ Start Updating Filter Bar ------------------------------->
+			<form action="category.php" method="get">
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting" style="color: black;">
-						<select>
-							<option value="1">Default sorting</option>
-							<option value="1">Sort by title</option>
-							<option value="1">Sort by author</option>
+						<select name="sort" onchange="this.form.submit()">
+							<option value="default" <?php if(isset($_GET['sort']) && $_GET['sort'] == "default") echo "selected"; ?>>Default sorting</option>
+							<option value="title" <?php if(isset($_GET['sort']) && $_GET['sort'] == "title") echo "selected"; ?>>Sort by title</option>
+							<option value="author" <?php if(isset($_GET['sort']) && $_GET['sort'] == "author") echo "selected"; ?>>Sort by author</option>
 						</select>
 					</div>
 					<div class="sorting mr-auto" style="color: black;">
-						<select>
-							<option value="1">Show Default</option>
-							<option value="1">Show 12</option>
-							<option value="1">Show 24</option>
+						<select name="show" onchange="this.form.submit()">
+							<option value="12" <?php if(isset($_GET['show']) && $_GET['show'] == "12") echo "selected"; ?>>Show Default</option>
+							<option value="3" <?php if(isset($_GET['show']) && $_GET['show'] == "3") echo "selected"; ?>>Show 3</option>
+							<option value="6" <?php if(isset($_GET['show']) && $_GET['show'] == "6") echo "selected"; ?>>Show 6</option>
+							<option value="9" <?php if(isset($_GET['show']) && $_GET['show'] == "9") echo "selected"; ?>>Show 9</option>
 						</select>
 					</div>
-					<div class="pagination">
+		<!-----			<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
 						<a href="#" class="active">1</a>
 						<a href="#">2</a>
@@ -295,216 +316,103 @@ session_start();
 						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
 						<a href="#">6</a>
 						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
+				
+
+
 				</div>
-				<!-- End Filter Bar -->
-				<!-- Start Book List -->
+		----->
+				</div>
+			</form>
+			<!---------------------------------------------------------------------------------------->
+
+
+			<!------------------------------------ Start Book List ----------------------------------->
+
 				<section class="lattest-product-area pb-40 category-list" style="margin-left: 60px; margin-top: 20px;">
 					<div class="row">
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img" >
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 1</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img">
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 2</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
+						<?php
+						include 'dbconnect.php'; 
+
+
+						// Get current page number, sort order, and number of books to show per page 
+						$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+						$sortOrder = isset($_GET['sort']) && in_array($_GET['sort'], ['default', 'title', 'author']) ? $_GET['sort'] : 'id_books';
+						$limit = isset($_GET['show']) && in_array($_GET['show'], ['3', '6', '9']) ? (int)$_GET['show'] : 12;
+
+						// Set correct SQL field for sort order
+						$sortField = $sortOrder === 'default' ? 'id_books' : $sortOrder;
+						$sortField = $sortOrder === 'author' ? 'author_name' : $sortField;
+
+						// Calculate the offset based on the current page number and limit
+						$offset = ($page - 1) * $limit;
+
+						// Count the total number of books
+						$countSql = "SELECT COUNT(*) AS total FROM books";
+						$countResult = mysqli_query($connection, $countSql);
+						$countRow = mysqli_fetch_assoc($countResult);
+						$totalBooks = $countRow['total'];
+						$totalPages = ceil($totalBooks / $limit);
+
+
+						//SQL query
+						$sql = "SELECT id_books, title, author_name, isbn, category, description, image_path, price, publish_date, version, pages, type, dimensions, publisher FROM books ORDER BY $sortField LIMIT $limit OFFSET $offset";
+						$result = mysqli_query($connection, $sql);
+
+						//loop through and display all books in db
+						if (mysqli_num_rows($result) > 0):
+							while($book = mysqli_fetch_assoc($result)):
+						?>
+							<div class="col-lg-4 col-md-6">
+								<div class="single-product" style="max-width:200px;">
+									<image width="100" height="260" style="padding-right:10px" src="../assets/img/product/<?php echo $book['image_path']; ?>" alt=""/>
+									<div class="product-details">
+										<h6><?php echo $book['title']; ?></h6>
+										<div class="shop-subcategory">
+											<h7><?php echo $book['author_name']; ?></h7>
+										</div>
+										<div class="price">
+											<h6>$<?php echo $book['price']; ?></h6>
+										</div>
+										<div class="prd-bottom">
+											<a href="" class="social-info">
+												<span class="ti-bag"></span>
+												<p class="hover-text">add to bag</p>
+											</a>
+											<a href="single-product.php?book=<?php echo $book['id_books']; ?>" class="social-info">
+												<span class="lnr lnr-move"></span>
+												<p class="hover-text">view more</p>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
+						<?php
+						endwhile;
+						else:
+							echo '<p>No Books Available.</p>';
+						endif;
+						?>
 						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img">
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 3</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img">
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 4</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img">
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 5</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<!-- Banner product image begin -->
-								<div class="item">
-                        		 	<div class="banner-img">
-                            			<svg width="180" height="200" xmlns="http://www.w3.org/2000/svg">
-                                			<rect width="180" height="200" x="-30" y="-15" fill="var(--secondary-color3)" />
-                            			</svg>
-                        			</div>
-                    			</div>
-								<!-- Banner product image end -->
-								<div class="product-details">
-									<h6>book 6</h6>
-									<div class="shop-subcategory">
-										<h7>e-book</h7>
-									</div>
-									<div class="price">
-										<h6>$52.00</h6>
-										<h6 class="l-through">$100.00</h6>
-									</div>
-									<div class="prd-bottom">
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="single-product.php" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php
+
+						// Pagination links
+						echo '<div class="pagination-container" style="clear: both; overflow: auto; max-width: 500px; display: block; text-align: center; margin-top: 20px;">';
+						echo '<div class="pagination">';
+						
+						if($page > 1) {
+							echo '<a href="?page=' . ($page - 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>';
+						}
+						for($i = 1; $i <= $totalPages; $i++) {
+							echo '<a href="?page=' . $i . '&sort=' . $sortOrder . '&show=' . $limit . '"' . ($i == $page ? ' class="active"' : '') . '>' . $i . '</a>';
+						}
+						if($page < $totalPages) {
+							echo '<a href="?page=' . ($page + 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>';
+						}
+						echo '</div>';
+						echo '</div>';
+
+						mysqli_close($connection);
+						?>
 				</section>
 			</div>
 		</div>

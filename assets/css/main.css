@@ -274,21 +274,25 @@ h1, h2, h3, h4, h5, h6 {
       color: #222222;
       background: #f9f9ff;
       border: 1px solid transparent; }
+  /*-------------------------------------- Modifications by Kaleb Phillips: genric-btn.primary Class ------------------------------
+    * Updated colors of button to primary color to primary-color.
+    * Updated highlight hover color of button to primary-color3.
+  -------------------------------------------------------------------------------------------------------------------------------*/
   .genric-btn.primary {
-    color: #fff;
-    background: #ffba00;
+    color: var(--primary-color);
+    background: var(--primary-color);
     border: 1px solid transparent; }
     .genric-btn.primary:hover {
-      color: #ffba00;
-      border: 1px solid #ffba00;
-      background: #fff; }
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      background:var(--primary-color3); }
   .genric-btn.primary-border {
-    color: #ffba00;
-    border: 1px solid #ffba00;
-    background: #fff; }
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color); }
     .genric-btn.primary-border:hover {
       color: #fff;
-      background: #ffffff;
+      background: var(--primary-color);
       border: 1px solid transparent; }
   .genric-btn.success {
     color: #fff;
@@ -297,7 +301,7 @@ h1, h2, h3, h4, h5, h6 {
     .genric-btn.success:hover {
       color: #4cd3e3;
       border: 1px solid #4cd3e3;
-      background: #fff; }
+      background: var(--primary-color); }
   .genric-btn.success-border {
     color: #4cd3e3;
     border: 1px solid #4cd3e3;
