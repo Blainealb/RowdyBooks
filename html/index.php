@@ -1,16 +1,85 @@
-<!--
+<!--------------------------------------------------------------------------------------------------------------------------------
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
 	code modified by @author Kaleb Phillips
--->
+--------------------------------------------------------------------------------------------------------------------------------->
 <?php
 session_start();
+
+/*-------------------------------------- Modifications by Kaleb Phillips: PHP --------------------------------------------------
+        * Added functions for retrieving books from database.
+        * Added variables to store book titles and covers.
+	* Added array for page changing buttuns in the category area filter bar.
+	* Added array for page changing buttuns in the recent viewed filter bar.
+--------------------------------------------------------------------------------------------------------------------------------*/
+
+// Holds the data for page changing buttuns in category area
+$category_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"category");
+
+// Holds the data for page changing buttuns in recent viewed area
+$recent_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"recent");
+
+// Retrieve Products from Database
+require "bookFunctions.php";
+require "dbconnect.php";
+
+// Retrieve the First Banner Book
+$book = getBook("999-1234567890");
+$banner_book1_title = $book['title'];
+$banner_book1_cover = $book['image_path'];
+
+// Retrieve the Second Banner Book
+$book = getBook("999-0000000002");
+$banner_book2_title = $book['title'];
+$banner_book2_cover = $book['image_path'];
+
+// Retrieve the Category Covers
+$category = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
+"999-1234567890","999-1234567890", "999-1234567890",
+"999-1234567890", "999-1234567890");
+$category1_cover = $category[0]['image_path'];
+$category2_cover = $category[1]['image_path'];
+$category3_cover = $category[2]['image_path'];
+$category4_cover = $category[3]['image_path'];
+$category5_cover = $category[4]['image_path'];
+$category6_cover = $category[5]['image_path'];
+$category7_cover = $category[6]['image_path'];
+$category8_cover = $category[7]['image_path'];
+
+// Retrieve the Recently Viewed Books
+$books = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
+"999-1234567890","999-1234567890", "999-1234567890",
+"999-1234567890", "999-1234567890");
+$recent_book1_title = $books[0]['title'];
+$recent_book1_cover = $books[0]['image_path'];
+$recent_book2_title = $books[1]['title'];
+$recent_book2_cover = $books[1]['image_path'];
+$recent_book3_title = $books[2]['title'];
+$recent_book3_cover = $books[2]['image_path'];
+$recent_book4_title = $books[3]['title'];
+$recent_book4_cover = $books[3]['image_path'];
+$recent_book5_title = $books[4]['title'];
+$recent_book5_cover = $books[4]['image_path'];
+$recent_book6_title = $books[5]['title'];
+$recent_book6_cover = $books[5]['image_path'];
+$recent_book7_title = $books[6]['title'];
+$recent_book7_cover = $books[6]['image_path'];
+$recent_book8_title = $books[7]['title'];
+$recent_book8_cover = $books[7]['image_path'];
+
 ?>
 
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
-
 
 <head>
 	<!-- Mobile Specific Meta -->
@@ -30,21 +99,34 @@ session_start();
 	<!--
 		CSS
 		============================================= -->
-	<link rel="stylesheet" href="/assets/css/linearicons.css">
-	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/assets/css/themify-icons.css">
-	<link rel="stylesheet" href="/assets/css/themify-icons.css">
-	<link rel="stylesheet" href="/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="/assets/css/owl.carousel.css">
-	<link rel="stylesheet" href="/assets/css/nice-select.css">
-	<link rel="stylesheet" href="/assets/css/nouislider.min.css">
-	<link rel="stylesheet" href="/assets/css/ion.rangeSlider.css">
-	<link rel="stylesheet" href="/assets/css/ion.rangeSlider.skinFlat.css">
-	<link rel="stylesheet" href="/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="/assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/linearicons.css">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/themify-icons.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="../assets/css/nice-select.css">
+	<link rel="stylesheet" href="../assets/css/nouislider.min.css">
+	<link rel="stylesheet" href="../assets/css/ion.rangeSlider.css">
+	<link rel="stylesheet" href="../assets/css/ion.rangeSlider.skinFlat.css">
+	<link rel="stylesheet" href="../assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
+	<!-------------------------------------- Modifications by Kaleb Phillips: Header Area ------------------------------------------
+		* Removed default logo and added site name to header.
+		* Updated the names of navbar dropdown toggle buttons.
+		* Removed extra navbar dropdown toggle buttons.
+		* Updated the color of the navbar to orange and the dropdown menu highlit color to blue.
+		* Removed the button to drop down search bar from navbar.
+		* Added magnifier icon inside search bar.
+		* Updated the color of the search bar.
+		* Removed button to hide the search bar.
+	--------------------------------------------------------------------------------------------------------------------------------->
+
+	<!-------------------------------------- Modifications by Blaine Byrd: Profile Page --------------------------------------------
+                * Modified Navbar to fit site needs
+        --------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -54,7 +136,6 @@ session_start();
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- Logo -->
 					<a class="navbar-brand logo_h" href="./">RowdyBooks</a>
-					<!--<a class="navbar-brand logo_h" href="index.php"><img src="assets/img/logo.png" alt=""></a>-->
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -69,27 +150,23 @@ session_start();
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop New</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+									<li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Trade Market</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+									<li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
+									<li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">About Us</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+									<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
+									<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
@@ -97,16 +174,12 @@ session_start();
                                                                  aria-expanded="false">My Account</a>
 								<ul class="dropdown-menu">
                                                                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.php">Profile</a></li>
+									<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                                                         	</ul>
+							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
-							<!-- Button to open search bar -->
-							<!--
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>-->
+							<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -119,13 +192,17 @@ session_start();
 					<span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span> 
 					<input type="text" class="form-control" id="search_input" placeholder="Search">
 					<button type="submit" class="btn"></button>
-					<!-- Button to hide the search bar -->
-					<!--<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>-->
 				</form>
 			</div>
 		</div>
 	</header>
 	<!-- End Header Area -->
+
+	<!-------------------------------------- Modifications by Kaleb Phillips: Banner Area ------------------------------------------
+		* Updated text in the banner for displaying new books.
+		* Updated the text for book titles and the images for covers to load dynamiclky from the database.
+		* Updated the color gradient of the add to bag button.
+	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- start banner Area -->
 	<section class="banner-area">
@@ -138,7 +215,8 @@ session_start();
 							<div class="col-lg-5 col-md-6">
 								<div class="banner-content">
 									<h1>New Book <br>available!</h1>
-									<p>Check out Book-Title, the latest book on our website.</p>
+									<p>Check out <?php echo $banner_book1_title ?>,
+									the latest book on our website.</p>
 									<div class="add-bag d-flex align-items-center">
 										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
 										<span class="add-text text-uppercase">Add to Bag</span>
@@ -147,11 +225,11 @@ session_start();
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img" style="margin-left: 175px;">
-									<svg width="657" height="394" xmlns="http://www.w3.org/2000/svg">
-										<rect width="294" height="394" x="10" y="10" fill="var(--primary-color)" />
-									</svg>
-									<!-- Banner product image -->
-									<!--<img class="img-fluid" src="assets/img/banner/banner-img.png" alt="">-->
+									<img class="img-fluid"
+										style="width: 384px; height: 484px; 
+											margin-left: auto; margin-right: auto;" 
+										src="../assets/img/product/<?php echo $banner_book1_cover; ?>" 
+										alt="">
 								</div>
 							</div>
 						</div>
@@ -160,7 +238,8 @@ session_start();
 							<div class="col-lg-5">
 								<div class="banner-content">
 									<h1>New Book <br>available!</h1>
-									<p>Check out Book-Title, the latest book on our website.</p>
+									<p>Check out <?php echo $banner_book2_title ?>,
+									the latest book on our website.</p>
 									<div class="add-bag d-flex align-items-center">
 										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
 										<span class="add-text text-uppercase">Add to Bag</span>
@@ -169,11 +248,11 @@ session_start();
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img" style="margin-left: 175px;">
-									<svg width="657" height="394" xmlns="http://www.w3.org/2000/svg">
-										<rect width="294" height="394" x="10" y="10" fill="var(--secondary-color3)" />
-									</svg>
-									<!-- Banner product image -->
-									<!--<img class="img-fluid" src="assets/img/banner/banner-img.png" alt="">-->
+									<img class="img-fluid"
+										style="width: 384px; height: 484px; 
+											margin-left: auto; margin-right: auto;" 
+										src="../assets/img/product/<?php echo $banner_book2_cover; ?>" 
+										alt="">
 								</div>
 							</div>
 						</div>
@@ -184,9 +263,22 @@ session_start();
 	</section>
 	<!-- End banner Area -->
 
-	<!-- start product Area -->
-	<!--<section class="owl-carousel active-product-area section_gap">-->
-		<!-- single product slide -->
+	<!-------------------------------------- Modifications by Kaleb Phillips: Category Area ----------------------------------------
+		* Removed carousel feature.
+		* Updated the images for categories to be book covers to load dynamiclky from the database.
+		* Updated categories text with placeholders for book categories.
+		* Updated the color of the view more button.
+		* Updated the color of the text for view more button.
+		* Updated the color of the text for book categories.
+		* Added filter bar above and below categories from the category page.
+		* Updated color of filter bar to orange.
+		* Updated color of selected page number in filter bar to blue.
+		* Removed extra prd-buttons from below categories.
+		* Added functionality for page changing buttons in filter bar.
+	--------------------------------------------------------------------------------------------------------------------------------->
+
+	<!-- Start Category Area -->
+		<!-- Section Title -->
 		<div class="single-product-slider">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -202,13 +294,37 @@ session_start();
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="category_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="category_button1" onclick="category_direct('button1')" class="<?php echo $category_pages["button1"] ?>"><?php echo $category_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="category_button2" onclick="category_direct('button2')" class="<?php echo $category_pages["button2"] ?>"><?php echo $category_pages["display2"] ?></a>
+								<a type="button" id="category_button3" onclick="category_direct('button3')" class="<?php echo $category_pages["button3"] ?>"><?php echo $category_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="category_button4" onclick="category_direct('button4')" class="<?php echo $category_pages["button4"] ?>"><?php echo $category_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="category_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
+
+								<!-- Start Page Script -->
+								<script type="text/javascript" src="../js/pageFunctions.js"></script>
+								<script>
+									// Get the PHP page arrey and save as JavaScript array
+									category_array = <?php echo json_encode($category_pages) ?>
+
+									// Previous arraow button function
+									function category_prev () {
+										prevPage(category_array)
+									}
+									// Next arraow button function
+									function category_next () {
+										nextPage(category_array)
+									}
+									// Direct page button function
+									function category_direct(button) {
+										directPage(category_array, button)
+									}
+								</script>
+								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -216,17 +332,17 @@ session_start();
 				</div>
 				<br>
 				<div class="row">
-					<!-- single product -->
+					<!-- Category 1 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p6.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category1_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 1</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -236,17 +352,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 2 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p8.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category2_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 2</h6>
 
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -256,17 +372,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 3 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p3.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category3_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 3</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -276,17 +392,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 4 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p5.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category4_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 4</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -296,17 +412,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 5 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p1.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category5_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 5</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -316,17 +432,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 6 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p4.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category6_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 6</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -336,17 +452,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 7 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p1.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category7_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 7</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -356,17 +472,17 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Category 8 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p8.jpg" alt="">-->
+							<!-- Category Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $category8_cover; ?>" 
+								alt="">
 							<div class="product-details">
 								<h6>Book-Category 8</h6>
-								
+
+								<!-- Button Below Category -->
 								<div class="prd-bottom">
 									<a href="" class="social-info">
 										<span class="lnr lnr-move"></span>
@@ -382,13 +498,16 @@ session_start();
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="category_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button1" onclick="category_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $category_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button2" onclick="category_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $category_pages["display2"] ?></a>
+								<a type="button" id="below_category_button3" onclick="category_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $category_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_category_button4" onclick="category_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $category_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="category_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -400,7 +519,19 @@ session_start();
 			</div>
 		</div>
 
-		<!-- single product slide -->
+	<!-------------------------------------- Modifications by Kaleb Phillips: Recently Viewed Area ---------------------------------
+		* Updated the text for book titles and the images for book covers to load dynamiclky from the database.
+		* Updated the color of the prd-buttons.
+		* Updated the color of the text for prd-buttons.
+		* Updated the color of the text for book titles and prices.
+		* Added filter bar above and below recently viewed from the category page.
+		* Updated color of filter bar to orange.
+		* Updated color of selected page number in filter bar to blue.
+		* Added functionality for page changing buttons in filter bar.
+	--------------------------------------------------------------------------------------------------------------------------------->
+
+	<!-- Start Recently Viewed Area -->
+		<!-- Section Title -->
 		<div class="single-product-slider">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -416,13 +547,37 @@ session_start();
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="recent_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button1" onclick="recent_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $recent_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button2" onclick="recent_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $recent_pages["display2"] ?></a>
+								<a type="button" id="recent_button3" onclick="recent_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $recent_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="recent_button4" onclick="recent_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $recent_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="recent_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
+
+								<!-- Start Page Script -->
+								<script type="text/javascript" src="../js/pageFunctions.js"></script>
+								<script>
+									// Get the PHP page arrey and save as JavaScript array
+									recent_array = <?php echo json_encode($recent_pages) ?>
+
+									// Previous arraow button function
+									function recent_prev () {
+										prevPage(recent_array)
+									}
+									// Next arraow button function
+									function recent_next () {
+										nextPage(recent_array)
+									}
+									// Direct page button function
+									function recent_direct(button) {
+										directPage(recent_array, button)
+									}
+								</script>
+								<!-- End Page Script -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -430,20 +585,21 @@ session_start();
 				</div>
 				<br>
 				<div class="row">
-					<!-- single product -->
+					<!-- Recently Viewed 1 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p6.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book1_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 1</h6>
+								<h6><?php echo $recent_book1_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -466,20 +622,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 2 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p8.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book2_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 2</h6>
+								<h6><?php echo $recent_book2_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -502,20 +659,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 3 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p3.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book3_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 3</h6>
+								<h6><?php echo $recent_book3_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -538,20 +696,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 4 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p5.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book4_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 4</h6>
+								<h6><?php echo $recent_book4_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -574,20 +733,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 5 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p1.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book5_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 5</h6>
+								<h6><?php echo $recent_book5_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -610,20 +770,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 6 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p4.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book6_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 6</h6>
+								<h6><?php echo $recent_book6_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -646,20 +807,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 7 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p1.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book7_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 7</h6>
+								<h6><?php echo $recent_book7_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -682,20 +844,21 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
+					<!-- Recently Viewed 8 -->
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
-							<svg width="263" height="283" style="margin-left: -10px; margin-top: -10px; margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg">
-								<rect width="263" height="280" x="10" y="10" fill="var(--secondary-color3)" />
-							</svg>
-							<!-- Trending product image -->
-							<!--<img class="img-fluid" src="assets/img/product/p8.jpg" alt="">-->
+							<!-- Recently Viewed Book Cover Image -->
+							<img class="img-fluid" style="width: 230px; height: 330px;" 
+								src="../assets/img/product/<?php echo $recent_book8_cover; ?>" 
+								alt="">
 							<div class="product-details">
-								<h6>Book-Title 8</h6>
+								<h6><?php echo $recent_book8_title ?></h6>
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
+
+								<!-- Buttons Below Book -->
 								<div class="prd-bottom">
 
 									<a href="" class="social-info">
@@ -724,13 +887,16 @@ session_start();
 						<!-- Start Filter Bar -->
 						<div class="filter-bar d-flex flex-wrap align-items-center">
 							<div class="pagination" style="margin-left: auto">
-								<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-								<a href="#">6</a>
-								<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- Start Page Buttons -->
+								<a type="button" class="prev-arrow" onclick="recent_prev()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button1" onclick="recent_direct('button1')" class="<?php echo $recent_pages["button1"] ?>"><?php echo $recent_pages["display1"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button2" onclick="recent_direct('button2')" class="<?php echo $recent_pages["button2"] ?>"><?php echo $recent_pages["display2"] ?></a>
+								<a type="button" id="below_recent_button3" onclick="recent_direct('button3')" class="<?php echo $recent_pages["button3"] ?>"><?php echo $recent_pages["display3"] ?></a>
+								<a class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+								<a type="button" id="below_recent_button4" onclick="recent_direct('button4')" class="<?php echo $recent_pages["button4"] ?>"><?php echo $recent_pages["display4"] ?></a>
+								<a type="button" class="next-arrow" onclick="recent_next()"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+								<!-- End Page Buttons -->
 							</div>
 						</div>
 						<!-- End Filter Bar -->
@@ -739,8 +905,14 @@ session_start();
 				</div>
 			</div>
 		</div>
-	<!--</section>-->
 	<!-- end product Area -->
+
+	<!-------------------------------------- Modifications by Kaleb Phillips: Footer Area ------------------------------------------
+		* Updated text for About Us section to a placeholder.
+		* Removed newsletter forom.
+		* Removed Instagram feed section.
+		* Removed social media account links.
+	-------------------------------------------------------------------------------------------------------------------->
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
@@ -754,7 +926,7 @@ session_start();
 						</p>
 					</div>
 				</div>
-			</div>						
+			</div>
 			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -764,21 +936,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!-- End footer Area -->
-	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-        <script src="/js/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
-        <script src="/js/vendor/bootstrap.min.js"></script>
-        <script src="/js/jquery.ajaxchimp.min.js"></script>
-        <script src="/js/jquery.nice-select.min.js"></script>
-        <script src="/js/jquery.sticky.js"></script>
-        <script src="/js/nouislider.min.js"></script>
-        <script src="/js/countdown.js"></script>
-        <script src="/js/jquery.magnific-popup.min.js"></script>
-        <script src="/js/owl.carousel.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        <script src="../js/jquery.ajaxchimp.min.js"></script>
+        <script src="../js/jquery.nice-select.min.js"></script>
+        <script src="../js/jquery.sticky.js"></script>
+        <script src="../js/nouislider.min.js"></script>
+        <script src="../js/countdown.js"></script>
+        <script src="../js/jquery.magnific-popup.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-        <script src="/js/gmaps.min.js"></script>
-        <script src="/js/main.js"></script>
+        <script src="../js/gmaps.min.js"></script>
+        <script src="../js/main.js"></script>
 
 </body>
 

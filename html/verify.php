@@ -68,6 +68,8 @@ if(array_key_exists('verify', $_POST)) {
                     	    $query = "UPDATE Users SET email_verified = '$email' WHERE userid = '$id' LIMIT 1";
                     	    $result = mysqli_query($connection, $query);
 		    	    echo "Thank you for verifying you're email";
+			    header("Location: ./");
+        		    die();
                     	}
                    	else {
                     	    echo "Code expired";
@@ -113,7 +115,7 @@ if(array_key_exists('verify', $_POST)) {
 	    <h2 style="color: white;">Enter your code below.</h2>
 	    <div class="field-wrap">
 	      <label>
-		Enter your code<span class="req">*</span>
+		Enter your code<span class="req"></span>
 	      </label>
               <input type="text" name="code" style="width: 300px; height: 50px;" required autocomplete="off"/>
 	      <br>
@@ -128,5 +130,8 @@ if(array_key_exists('verify', $_POST)) {
    </div>
 
 </div> <!-- /form -->
+<!-- partial -->
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../js/login_script.js"></script>
+
 </body>
 </html>

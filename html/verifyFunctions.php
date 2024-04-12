@@ -15,6 +15,8 @@
  * @param email - the email address to send the code to.
  * @return - a boolean with true if the email has been verified.
  */
+
+session_start();
 function checkVerified ($email) {
 	require "dbconnect.php";
         // Search the database for the email
