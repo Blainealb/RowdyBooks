@@ -33,7 +33,10 @@ ___
 
 ## Authors
 Blaine Byrd 
+
 Diego Aguirre
+
 Kaleb Phillips
+
 Loren Isenhour 
 ___
