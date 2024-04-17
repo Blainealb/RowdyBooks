@@ -179,13 +179,6 @@ mysqli_close($connection);
 				<img src="../assets/img/product/<?php echo htmlspecialchars($book['image_path']); ?>" alt="Book Image" style="width: 294px; height: 394px;">	
 			</div>
 		    </div>
-
-                    <!-- single-slide -->
-                <!--    <div class="item">
-                        <div class="banner-img" style="margin-left: 50px;">
-                            <img src="../assets/img/product/<?php echo htmlspecialchars($book['image_path']); ?>" alt="Book Image" style="width: 294px; height: 394px;">
-                        </div>
-		    </div> -->
 	<?php endforeach; ?>
                 </div>
                 <!-- Carousel ends -->
@@ -218,51 +211,21 @@ mysqli_close($connection);
 				<div class="sidebar-categories">
 					<div class="head">Browse Categories</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>Arts and Humanities</a>
-						</li>
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>Business</a>
-						</li>
-
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>Health and Medicine</a>
-						</li>
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>Multi-Interdisciplinary</a>
-						</li>
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>STEM</a>
-						</li>
-						<li class="main-nav-list"><a href="#"><span
-								 class="lnr lnr-arrow-right"></span>Social Sciences</a>
-						</li>
+						<?php
+						$categories = ['Arts and Humanities', 'Business', 'Health and Medicine', 'Multi-Interdisciplinary', 'STEM', 'Social Sciences', 'ALL'];
+						foreach ($categories as $cat) {
+							$link = "?category=$cat";
+							$link .= isset($_GET['sort']) ? "&sort=" . urlencode($_GET['sort']) : "";
+							$link .= isset($_GET['show']) ? "&show=" . urlencode($_GET['show']) : "";
+							$active = (isset($_GET['category']) && $_GET['category'] === $cat) ? "style='font-weight:bold;'" : "";
+							echo "<li class='main-nav-list'><a href='$link' $active><span class='lnr lnr-arrow-right'></span>$cat</a></li>";
+						}
+						?>
 					</ul>
 				</div>
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Filters</div>
-<!--------Removed option for now					<div class="common-filter">
-					<div class="head">New / Used</div>
-						<form action="#">
-							<ul>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="newbook" name="newusedfilter"><label for="newbook">New</label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="usedBook" name="newusedfilter"><label for="usedBook">Used</label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="allBooks" name="newusedfilter"><label for="allBooks">All</label></li>
-							</ul>
-						</form>
-					</div>
------------>
-<!------Removed option for now					<div class="common-filter">
-						<div class="head">Required / Optional</div>
-						<form action="#">
-							<ul>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="requirebooks" name="requiredfilter"><label for="requirebooks">Required</label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="optionalbooks" name="requiredfilter"><label for="optionalbooks">Optional</label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="allBooks" name="requiredfilter"><label for="allBooks">All</label></li>
-							</ul>
-						</form>
-					</div>
-------->
+
 					<div class="common-filter">
 						<div class="head">Type</div>
 						<form action="#">
@@ -291,38 +254,30 @@ mysqli_close($connection);
 			<div class="col-xl-9 col-lg-8 col-md-7">
 
 			<!------------------------------ Start Updating Filter Bar ------------------------------->
+
 			<form action="category.php" method="get">
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting" style="color: black;">
 						<select name="sort" onchange="this.form.submit()">
-							<option value="default" <?php if(isset($_GET['sort']) && $_GET['sort'] == "default") echo "selected"; ?>>Default sorting</option>
-							<option value="title" <?php if(isset($_GET['sort']) && $_GET['sort'] == "title") echo "selected"; ?>>Sort by title</option>
-							<option value="author" <?php if(isset($_GET['sort']) && $_GET['sort'] == "author") echo "selected"; ?>>Sort by author</option>
+							<option value="default" <?= (isset($_GET['sort']) && $_GET['sort'] == "default") ? "selected" : "" ?>>Default sorting</option>
+							<option value="title" <?= (isset($_GET['sort']) && $_GET['sort'] == "title") ? "selected" : "" ?>>Sort by title</option>
+							<option value="author" <?= (isset($_GET['sort']) && $_GET['sort'] == "author") ? "selected" : "" ?>>Sort by author</option>
 						</select>
+						<input type="hidden" name="category" value="<?= htmlspecialchars(isset($_GET['category']) ? $_GET['category'] : 'ALL') ?>">
+
 					</div>
-					<div class="sorting mr-auto" style="color: black;">
+					
+					<div class="sorting" style="color: black;">
 						<select name="show" onchange="this.form.submit()">
-							<option value="12" <?php if(isset($_GET['show']) && $_GET['show'] == "12") echo "selected"; ?>>Show Default</option>
-							<option value="3" <?php if(isset($_GET['show']) && $_GET['show'] == "3") echo "selected"; ?>>Show 3</option>
-							<option value="6" <?php if(isset($_GET['show']) && $_GET['show'] == "6") echo "selected"; ?>>Show 6</option>
-							<option value="9" <?php if(isset($_GET['show']) && $_GET['show'] == "9") echo "selected"; ?>>Show 9</option>
+							<option value="12" <?= (isset($_GET['show']) && $_GET['show'] == "12") ? "selected" : "" ?>>Show Default</option>
+							<option value="3" <?= (isset($_GET['show']) && $_GET['show'] == "3") ? "selected" : "" ?>>Show 3</option>
+							<option value="6" <?= (isset($_GET['show']) && $_GET['show'] == "6") ? "selected" : "" ?>>Show 6</option>
+							<option value="9" <?= (isset($_GET['show']) && $_GET['show'] == "9") ? "selected" : "" ?>>Show 9</option>
 						</select>
 					</div>
-		<!-----			<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-				
-
-
-				</div>
-		----->
 				</div>
 			</form>
+
 			<!---------------------------------------------------------------------------------------->
 
 
@@ -338,6 +293,7 @@ mysqli_close($connection);
 						$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 						$sortOrder = isset($_GET['sort']) && in_array($_GET['sort'], ['default', 'title', 'author']) ? $_GET['sort'] : 'id_books';
 						$limit = isset($_GET['show']) && in_array($_GET['show'], ['3', '6', '9']) ? (int)$_GET['show'] : 12;
+						$category = isset($_GET['category']) ? $_GET['category'] : 'ALL';
 
 						// Set correct SQL field for sort order
 						$sortField = $sortOrder === 'default' ? 'id_books' : $sortOrder;
@@ -346,17 +302,33 @@ mysqli_close($connection);
 						// Calculate the offset based on the current page number and limit
 						$offset = ($page - 1) * $limit;
 
-						// Count the total number of books
-						$countSql = "SELECT COUNT(*) AS total FROM books";
+						if ($category && $category !== 'ALL') {
+							$countSql = "SELECT COUNT(*) AS total FROM books WHERE category = '".mysqli_real_escape_string($connection, $category)."'";
+						} 
+						else if ($category === 'ALL') {
+							$countSql = "SELECT COUNT(*) AS total FROM books";
+						}
+						else {
+							$countSql = "SELECT COUNT(*) AS total FROM books";
+						}
+
 						$countResult = mysqli_query($connection, $countSql);
 						$countRow = mysqli_fetch_assoc($countResult);
 						$totalBooks = $countRow['total'];
 						$totalPages = ceil($totalBooks / $limit);
-
-
-						//SQL query
-						$sql = "SELECT id_books, title, author_name, isbn, category, description, image_path, price, publish_date, version, pages, type, dimensions, publisher FROM books ORDER BY $sortField LIMIT $limit OFFSET $offset";
+						
+						if ($category && $category !== 'ALL') {
+							$sql = "SELECT id_books, title, author_name, isbn, category, price, type, description, image_path FROM books WHERE category = '".mysqli_real_escape_string($connection, $category)."' ORDER BY $sortField LIMIT $limit OFFSET $offset";
+						} 
+						else if ($category === 'ALL'){
+							$sql = "SELECT id_books, title, author_name, isbn, category, price, type, description, image_path FROM books ORDER BY $sortField LIMIT $limit OFFSET $offset";
+						} 
+						else {
+							$sql = "SELECT id_books, title, author_name, isbn, category, price, type, description, image_path FROM books ORDER BY $sortField LIMIT $limit OFFSET $offset";
+						}
+						
 						$result = mysqli_query($connection, $sql);
+
 
 						//loop through and display all books in db
 						if (mysqli_num_rows($result) > 0):
@@ -374,10 +346,16 @@ mysqli_close($connection);
 											<h6>$<?php echo $book['price']; ?></h6>
 										</div>
 										<div class="prd-bottom">
-											<a href="" class="social-info">
+										<!----	<a href="" class="social-info">
 												<span class="ti-bag"></span>
 												<p class="hover-text">add to bag</p>
-											</a>
+											</a>---->
+
+
+											<a type="button" id="add_to_bag_button1" onclick="addToBag('<?= $book['isbn'] ?>');" class="social-info">
+                    										<span class="ti-bag"></span>
+                    										<p class="hover-text">add to bag</p>
+                									</a>
 											<a href="single-product.php?book=<?php echo $book['id_books']; ?>" class="social-info">
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">view more</p>
@@ -396,21 +374,22 @@ mysqli_close($connection);
 						<?php
 
 						// Pagination links
-						echo '<div class="pagination-container" style="clear: both; overflow: auto; max-width: 500px; display: block; text-align: center; margin-top: 20px;">';
-						echo '<div class="pagination">';
+						if ($totalPages > 1) {
+							echo '<div class="pagination-container" style="clear: both; overflow: auto; max-width: 500px; display: block; text-align: center; margin-top: 20px;">';
+							echo '<div class="pagination">';
 						
-						if($page > 1) {
-							echo '<a href="?page=' . ($page - 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>';
+							if($page > 1) {
+								echo '<a href="?page=' . ($page - 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>';
+							}
+							for($i = 1; $i <= $totalPages; $i++) {
+								echo '<a href="?page=' . $i . '&sort=' . $sortOrder . '&show=' . $limit . '"' . ($i == $page ? ' class="active"' : '') . '>' . $i . '</a>';
+							}
+							if($page < $totalPages) {
+								echo '<a href="?page=' . ($page + 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>';
+							}
+							echo '</div>';
+							echo '</div>';
 						}
-						for($i = 1; $i <= $totalPages; $i++) {
-							echo '<a href="?page=' . $i . '&sort=' . $sortOrder . '&show=' . $limit . '"' . ($i == $page ? ' class="active"' : '') . '>' . $i . '</a>';
-						}
-						if($page < $totalPages) {
-							echo '<a href="?page=' . ($page + 1) . '&sort=' . $sortOrder . '&show=' . $limit . '" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>';
-						}
-						echo '</div>';
-						echo '</div>';
-
 						mysqli_close($connection);
 						?>
 				</section>
@@ -539,6 +518,57 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="../js/gmaps.min.js"></script>
 	<script src="../js/main.js"></script>
+<!----<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+--->
+
+        <!-- Start Add To Bag Script -->
+        <script type="text/javascript" src="../js/pageFunctions.js"></script>					
+	<script>
+
+                // ISBN of Books
+                var book1 = <?php echo json_encode($recent_book1_isbn); ?>;
+                var book2 = <?php echo json_encode($recent_book2_isbn); ?>;
+                var book3 = <?php echo json_encode($recent_book3_isbn); ?>;
+                var book4 = <?php echo json_encode($recent_book4_isbn); ?>;
+                var book5 = <?php echo json_encode($recent_book5_isbn); ?>;
+                var book6 = <?php echo json_encode($recent_book6_isbn); ?>;
+                var book7 = <?php echo json_encode($recent_book7_isbn); ?>;
+                var book8 = <?php echo json_encode($recent_book8_isbn); ?>;
+
+                // Add to bag button function
+                function addToBag (isbn) {
+                var user = <?php echo json_encode($id); ?>;
+
+                $.ajax({
+                        url:"bookFunctions.php",
+                        type: "post",
+                        dataType: 'json',
+                        data: {add: isbn, userid: user},
+                        success:function(result){
+                                console.log(result.addToCart);
+                                // If the book was added to the cart
+                                if(result.addToCart == true) {
+                                        window.location.href = "cart.php";
+                                }
+                                // If the book is already in the cart
+                                else if (result.addToCart == "exists") {
+                                        alert("This book is already in your cart");
+                                }
+                                else if(result.addToCart == "full") {
+                                        alert("Your cart is full");
+                                }
+                                // If there was an error adding to cart
+                                else {
+                                        alert("Failed to add to the cart");
+                                }
+                        }
+                });
+
+        }
+        </script>
+        <!-- End Add To Bag Script -->
+
+
 </body>
 
 </html>

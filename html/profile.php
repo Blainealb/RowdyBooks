@@ -110,17 +110,7 @@ $userEmail = $_SESSION['email'];
 							</li>
 							<li class="nav-item active submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">
-								<?php
-        							$isLoggedIn = true; 
-
-        							if ($isLoggedIn) {
-            							echo htmlspecialchars($_SESSION['username']); 
-        							} else {
-            							echo "Log In";
-        							}
-        							?>
-   								</a>
+								 aria-expanded="false">My Account</a>
 						
                                                                 <ul class="dropdown-menu">
                                                                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

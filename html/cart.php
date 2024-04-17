@@ -1,7 +1,7 @@
 <!--
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
-	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/  
+	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
 	code modified by @author Kaleb Phillips
 -->
 <?php
@@ -113,7 +113,7 @@ $cart_book3_price = $cart[2]['price'];
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">About Us</a> 
+								 aria-expanded="false">About Us</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
 									<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
@@ -217,8 +217,8 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img id="book1_cover" class="img-fluid" style="width: 75px; height: 100px;" 
-                                                src="../assets/img/product/<?php echo $cart_book1_cover; ?>" 
+                                            <img id="book1_cover" class="img-fluid" style="width: 75px; height: 100px;"
+                                                src="../assets/img/product/<?php echo $cart_book1_cover; ?>"
                                                 alt="">
                                         </div>
                                         <div id="book1_title" class="media-body">
@@ -354,7 +354,7 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" style="white-space: nowrap;" href="category.php">Continue Shopping</a>
-                                        <a class="primary-btn" href="checkout.php">Proceed to checkout</a>
+                                        <a class="primary-btn" style="white-space: nowrap;" href="checkout.php">Proceed to checkout</a>
                                     </div>
                                 </td>
                             </tr>

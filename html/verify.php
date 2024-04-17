@@ -68,7 +68,7 @@ if(array_key_exists('verify', $_POST)) {
                     	    $query = "UPDATE Users SET email_verified = '$email' WHERE userid = '$id' LIMIT 1";
                     	    $result = mysqli_query($connection, $query);
 		    	    echo "Thank you for verifying you're email";
-			    header("Location: ./");
+			    header("Location: profile.php");
         		    die();
                     	}
                    	else {
