@@ -116,11 +116,6 @@
                                                 </ul>
                                                 <ul class="nav navbar-nav navbar-right">
                                                         <li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-                                                        <!-- Button to open search bar -->
-                                                        <!--
-                                                        <li class="nav-item">
-                                                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                                                        </li>-->
                                                 </ul>
                                         </div>
                                 </div>
@@ -180,7 +175,7 @@
 					<!-- Product Details begin -->
 					<div class="s_product_text">
 						<h3><?php echo $bookDetails['title']; ?></h3>
-						<h2>$49.99</h2>
+						<h2>$<?php echo $bookDetails['price']; ?></h2>
 						<ul class="list">
 							<li>Category&nbsp;: &nbsp; <?php echo $bookDetails['category']; ?></li>
 							<li>Type&nbsp;: &nbsp; <?php echo $bookDetails['type']; ?></li>
@@ -188,22 +183,12 @@
 						</ul>
 						<p><?php echo $bookDetails['description']; ?>
 						</p>
-<!---------						<div class="product_count">
-							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
------->
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Add to Cart</a>
-<!-------Removed for now							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                                                	<a href="javascript:void(0);" onclick="addToBag('<?= htmlspecialchars($bookDetails['isbn']) ?>');" class="primary-btn">
+								Add to bag
+							</a>
 						</div>
 					</div>
------------------------>			
 				<!-- Product Details end -->
 				</div>
 			</div>
@@ -229,10 +214,6 @@
 					<a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
 					 aria-selected="false">Details</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" id="sellercomments-tab" data-toggle="tab" href="#sellercomments" role="tab" aria-controls="sellercomments"
-					 aria-selected="false">Seller Comments</a>
-				</li> -->
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -269,22 +250,6 @@
 										<h5><?php echo $bookDetails['publish_date']; ?></h5>
 									</td>
 								</tr>
-								<!-- <tr>
-									<td>
-										<h5>Sold BY</h5>
-									</td>
-									<td>
-										<h5>rbuser993</h5>
-									</td>
-								</tr> -->
-								<!-- <tr>
-									<td>
-										<h5>New / Used</h5>
-									</td>
-									<td>
-										<h5>N/A</h5>
-									</td>
-								</tr> -->
 								<tr>
 									<td>
 										<h5>Version</h5>
@@ -310,22 +275,6 @@
 										<h5><?php echo $bookDetails['type']; ?></h5>
 									</td>
 								</tr>
-								<!-- <tr>
-									<td>
-										<h5>Required / Optional</h5>
-									</td>
-									<td>
-										<h5>Required</h5>
-									</td>
-								</tr> -->
-								<!-- <tr>
-									<td>
-										<h5>Chapters Read</h5>
-									</td>
-									<td>
-										<h5>Chapters: 1, 2, 6, 7, and 12</h5>
-									</td>
-								</tr> -->
 								<tr>
 									<td>
 										<h5>Dimensions / File Size</h5>
@@ -338,41 +287,10 @@
 						</table>
 					</div>
 				</div>
-				<!-- <div class="tab-pane fade" id="sellercomments" role="tabpanel" aria-labelledby="sellercomments-tab">
-					<div class="row">
-						<div class="col-lg-8">
-							<div class="comment_list"> 
-								<div class="review_item">
-									<div class="media">
-										<div class="media-body">
-											<h4>Seller: rbuser993</h4><br>
-											<h5>Comments:</h5>
-											<h6>I used this book for Intro to Computer Science with Professor John Doe.
-												This book was used quite a bit throughout the semester. It was needed often for quizzes, test,
-												and projects.
-											</h6>
-										</div>
-									</div>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="media-body">
-											<h5>Feedback:</h5>
-											<h6>I found this book to be extremely helpful for this class.
-											</h6>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</section>
 	<!---------------------------------------------------------- End Changes --------------------------------------------------------->
-
-
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
@@ -412,6 +330,40 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="../js/gmaps.min.js"></script>
 	<script src="../js/main.js"></script>
+
+
+
+        <script>
+                function addToBag(isbn) {
+                        var user = <?php echo json_encode($_SESSION['userid'] ?? ''); ?>;  // Ensure you're getting the user ID correctly
+
+                        $.ajax({
+                                url: "bookFunctions.php",
+                                type: "post",
+                                dataType: 'json',
+                                data: {add: isbn, userid: user},
+                                success: function(result) {
+                                if(result.addToCart === true) {
+                                        alert("Book added to your cart!");
+                                        window.location.href = "cart.php";  // Redirect to cart page or update the cart display dynamically
+                                } else if(result.addToCart === "exists") {
+                                        alert("This book is already in your cart");
+                                } else if(result.addToCart === "full") {
+                                        alert("Your cart is full");
+                                } else {
+                                        alert("Failed to add to the cart");
+                                }
+                                },
+                        error: function(xhr, status, error) {
+                        alert("Error: " + xhr.responseText);  // More detailed error message
+                        }
+                        });
+                }
+        </script>
+
+
+
+
 
 </body>
 
