@@ -76,16 +76,15 @@ $cart_book3_price = $cart[2]['price'];
 </head>
 
 <body>
-
-    <!-- Start Header Area -->
+	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- Logo -->
-                    			<a class="navbar-brand logo_h" href="./">RowdyBooks</a>
-					<a class="navbar-brand logo_h" href="index.php"><img src="img/logo.png" alt=""></a>
+					<a class="navbar-brand logo_h" href="./">RowdyBooks</a>
+					<a class="navbar-brand logo_h" href="./"><img src="img/logo.png" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -95,12 +94,12 @@ $cart_book3_price = $cart[2]['price'];
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="./">Home</a></li>
 							<li class="nav-item submenu dropdown active">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop New</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
+									<li class="nav-item active"><a class="nav-link" href="category.php">Shop Category</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
@@ -120,18 +119,28 @@ $cart_book3_price = $cart[2]['price'];
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
-                                    				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        			 aria-expanded="false">My Account</a>
-                                    				<ul class="dropdown-menu">
-                                            				<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                                            				<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                                    				</ul>
-                            				</li>
-
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">My Account</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+								</ul>
+							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-						<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
 						</ul>
+						</div>
+					</div>
+				</div>
+				<div class="search_input" id="search_input_box">
+					<div class="container">
+						<form class="d-flex justify-content-between">
+							<!-- magnifier icon inside search bar-->
+							<span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
+							<input type="text" class="form-control" id="search_input" placeholder="Search">
+							<button type="submit" class="btn"></button>
+						</form>
 					</div>
 				</div>
 			</nav>
@@ -139,15 +148,15 @@ $cart_book3_price = $cart[2]['price'];
 		<div class="search_input" id="search_input_box">
 			<div class="container">
 				<form class="d-flex justify-content-between">
-				<!-- magnifier icon inside search bar-->
-                                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
-                                        <input type="text" class="form-control" id="search_input" placeholder="Search">
-                                        <button type="submit" class="btn"></button>
+					<!-- magnifier icon inside search bar-->
+					<span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
+					<input type="text" class="form-control" id="search_input" placeholder="Search">
+					<button type="submit" class="btn"></button>
 				</form>
 			</div>
 		</div>
 	</header>
-    <!-- End Header Area -->
+	<!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -156,8 +165,9 @@ $cart_book3_price = $cart[2]['price'];
                 <div class="col-first">
                     <h1>Shopping Cart</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.php">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.php">Cart</a>
+                        <a href="./">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.php">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="cart.php">Cart</a>
                     </nav>
                 </div>
             </div>
@@ -217,12 +227,16 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img id="book1_cover" class="img-fluid" style="width: 75px; height: 100px;"
-                                                src="../assets/img/product/<?php echo $cart_book1_cover; ?>"
-                                                alt="">
+											<a href="single-product.php?book=<?php echo $cart[0]['id_books']; ?>">
+                                            	<img id="book1_cover" class="img-fluid" style="width: 75px; height: 100px;"
+                                                	src="../assets/img/product/<?php echo $cart_book1_cover; ?>"
+                                                	alt="">
+											</a>
                                         </div>
                                         <div id="book1_title" class="media-body">
-                                            <p><i><?php echo $cart_book1_title ?></i></p>
+											<a href="single-product.php?book=<?php echo $cart[0]['id_books']; ?>">
+                                                <h6><i><?php echo $cart_book1_title ?></i></h6>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -256,12 +270,16 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img id="book2_cover" class="img-fluid" style="width: 75px; height: 100px;" 
-                                                src="../assets/img/product/<?php echo $cart_book2_cover; ?>" 
-                                                alt="">
+											<a href="single-product.php?book=<?php echo $cart[1]['id_books']; ?>">
+                                            	<img id="book2_cover" class="img-fluid" style="width: 75px; height: 100px;"
+                                                	src="../assets/img/product/<?php echo $cart_book2_cover; ?>"
+                                                	alt="">
+											</a>
                                         </div>
                                         <div id="book2_title" class="media-body">
-                                            <p><i><?php echo $cart_book2_title ?></i></p>
+											<a href="single-product.php?book=<?php echo $cart[1]['id_books']; ?>">
+                                                <h6><i><?php echo $cart_book2_title ?></i></h6>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -294,12 +312,16 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img id="book3_cover" class="img-fluid" style="width: 75px; height: 100px;" 
-                                                src="../assets/img/product/<?php echo $cart_book3_cover; ?>" 
-                                                alt="">
+											<a href="single-product.php?book=<?php echo $cart[2]['id_books']; ?>">
+                                            	<img id="book3_cover" class="img-fluid" style="width: 75px; height: 100px;"
+                                                	src="../assets/img/product/<?php echo $cart_book3_cover; ?>"
+                                                	alt="">
+											</a>
                                         </div>
                                         <div id="book3_title" class="media-body">
-                                            <p><i><?php echo $cart_book3_title ?></i></p>
+											<a href="single-product.php?book=<?php echo $cart[2]['id_books']; ?>">
+                                            	<h6><i><?php echo $cart_book3_title ?></i></h6>
+											</a>
                                         </div>
                                     </div>
                                 </td>
