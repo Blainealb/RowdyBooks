@@ -183,13 +183,15 @@ $cart_book3_price = $cart[2]['price'];
 
     <!-------------------------------------- Modifications by Kaleb Phillips: Cart Area --------------------------------------------
         * Added functionality for displaying book titles and covers from the database.
-	* Added message and button to prompt the user to lgin if they are not currently.
+		* Added message and button to prompt the user to lgin if they are not currently.
         * Added functionality to show and hide login message.
         * Added message and button to indicate that the cart is empty if there are no books in it currently.
         * Added functionality to show and hide empty cart message.
         * Added functionality to show and hide table rows for books depending on the number of books in the cart.
         * Added button to remove books from cart and implemented the functionality for removing books.
         * Added extra comments.
+		* Added links to book covers and titles to go to the single product page.
+		* Added product count functionality and total price calculation based on product count.
     --------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- Start Cart Area -->
@@ -246,11 +248,11 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <br>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                        <input type="text" name="qty" id="sst1" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        <button onclick="var result = document.getElementById('sst1'); var sst1 = result.value; if( !isNaN( sst1 )) result.value++; document.getElementById('book1_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book1_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        <button onclick="var result = document.getElementById('sst1'); var sst1 = result.value; if( !isNaN( sst1 ) &amp;&amp; sst1 > 1 ) result.value--; document.getElementById('book1_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book1_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
 
@@ -260,10 +262,11 @@ $cart_book3_price = $cart[2]['price'];
                                         <a type="button" class="genric-btn primary small" onclick="remove('button1', book1_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
                                 </td>
-
-                                <td id="book1_total_price">
-                                    <h6><?php echo $cart_book1_price ?></h6>
-                                </td>
+								<h6>
+                                	<td id="book1_total_price">
+                                    	<?php echo $cart_book1_price ?>
+                                	</td>
+								</h6>
                             </tr>
                             <!-- Cart table 2 -->
                             <tr id="table2">
@@ -289,11 +292,11 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <br>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                        <input type="text" name="qty" id="sst2" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        <button onclick="var result = document.getElementById('sst2'); var sst2 = result.value; if( !isNaN( sst2 )) result.value++; document.getElementById('book2_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book2_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        <button onclick="var result = document.getElementById('sst2'); var sst2 = result.value; if( !isNaN( sst2 ) &amp;&amp; sst2 > 1 ) result.value--; document.getElementById('book2_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book2_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
 
@@ -303,9 +306,11 @@ $cart_book3_price = $cart[2]['price'];
                                         <a type="button" class="genric-btn primary small" onclick="remove('button2', book2_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
                                 </td>
-                                <td id="book2_total_price">
-                                    <h6><?php echo $cart_book2_price ?></h6>
-                                </td>
+								<h6>
+                                	<td id="book2_total_price">
+                                    	<?php echo $cart_book2_price ?>
+                                	</td>
+								</h6>
                             </tr>
                             <!-- Cart table 3 -->
                             <tr id="table3">
@@ -331,11 +336,11 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <br>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                        <input type="text" name="qty" id="sst3" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        <button onclick="var result = document.getElementById('sst3'); var sst3 = result.value; if( !isNaN( sst3 )) result.value++; document.getElementById('book3_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book3_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        <button onclick="var result = document.getElementById('sst3'); var sst3 = result.value; if( !isNaN( sst3 ) &amp;&amp; sst3 > 1 ) result.value--; document.getElementById('book3_total_price').innerHTML = (Math.round(result.value * <?php echo $cart_book3_price ?> * 100) / 100).toFixed(2); document.getElementById('total_price').innerHTML = (Math.round((parseFloat(document.getElementById('book1_total_price').innerHTML) + parseFloat(document.getElementById('book2_total_price').innerHTML) + parseFloat(document.getElementById('book3_total_price').innerHTML)) * 100) / 100).toFixed(2); return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
 
@@ -345,9 +350,11 @@ $cart_book3_price = $cart[2]['price'];
                                         <a type="button" class="genric-btn primary small" onclick="remove('button3', book3_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
                                 </td>
-                                <td id="book3_total_price">
-                                    <h6><?php echo $cart_book3_price ?></h6>
-                                </td>
+								<h6>
+                                	<td id="book3_total_price">
+                                    	<?php echo $cart_book3_price ?>
+                                	</td>
+								</h6>
                             </tr>
                             <tr class="bottom_button">
                                 <td>
@@ -357,9 +364,11 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <h6>Subtotal</h6>
                                 </td>
-                                <td>
-                                    <h6><?php echo $cart_book1_price + $cart_book2_price + $cart_book3_price ?></h6>
-                                </td>
+								<h6>
+                                	<td id="total_price">
+                                    	<?php echo $cart_book1_price + $cart_book2_price + $cart_book3_price ?>
+                             		</td>
+								</h6>
                             </tr>
                             <tr>
 
@@ -407,21 +416,21 @@ $cart_book3_price = $cart[2]['price'];
     <script>
 
         // Books
-        var book1_title = <?php echo json_encode($cart_book1_title); ?>;
-        var book1_cover = <?php echo json_encode($cart_book1_cover); ?>;
-        var book1_isbn = <?php echo json_encode($cart_book1_isbn); ?>;
-	var book1_price = <?php echo json_encode($cart_book1_price); ?>;
-        var book2_title = <?php echo json_encode($cart_book2_title); ?>;
-        var book2_cover = <?php echo json_encode($cart_book2_cover); ?>;
-        var book2_isbn = <?php echo json_encode($cart_book2_isbn); ?>;
-	var book2_price = <?php echo json_encode($cart_book2_price); ?>;
-        var book3_title = <?php echo json_encode($cart_book3_title); ?>;
-        var book3_cover = <?php echo json_encode($cart_book3_cover); ?>;
-        var book3_isbn = <?php echo json_encode($cart_book3_isbn); ?>;
-	var book3_price = <?php echo json_encode($cart_book3_price); ?>;
+		var book1_title = <?php echo json_encode($cart_book1_title); ?>;
+		var book1_cover = <?php echo json_encode($cart_book1_cover); ?>;
+		var book1_isbn = <?php echo json_encode($cart_book1_isbn); ?>;
+		var book1_price = <?php echo json_encode($cart_book1_price); ?>;
+		var book2_title = <?php echo json_encode($cart_book2_title); ?>;
+		var book2_cover = <?php echo json_encode($cart_book2_cover); ?>;
+		var book2_isbn = <?php echo json_encode($cart_book2_isbn); ?>;
+		var book2_price = <?php echo json_encode($cart_book2_price); ?>;
+		var book3_title = <?php echo json_encode($cart_book3_title); ?>;
+		var book3_cover = <?php echo json_encode($cart_book3_cover); ?>;
+		var book3_isbn = <?php echo json_encode($cart_book3_isbn); ?>;
+		var book3_price = <?php echo json_encode($cart_book3_price); ?>;
 
         // Loggedin status
-        loggedin = <?php echo json_encode($loggedin); ?>;
+        loggedin = <?php echo json_encode($loggedin); ?>;=
 
 
         // Hide cart table elements with empty book slots
@@ -445,7 +454,7 @@ $cart_book3_price = $cart[2]['price'];
             // Show empty cart message
             document.getElementById("emptyCart").style = "text-align: center; display: none";
             // Hide the table for the cart
-            document.getElementById("cartTable").style = "text-align: center; display: none"; 
+            document.getElementById("cartTable").style = "text-align: center; display: none";
         }
 
         /**
@@ -509,7 +518,7 @@ $cart_book3_price = $cart[2]['price'];
                 // Show empty cart message
                 document.getElementById("emptyCart").style = "text-align: center; display: block";
                 // Hide the table for the cart
-                document.getElementById("cartTable").style = "text-align: center; display: none";            
+                document.getElementById("cartTable").style = "text-align: center; display: none";
             }
         }
     </script>
