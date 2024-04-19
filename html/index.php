@@ -110,74 +110,76 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 	--------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<!-- Logo -->
-					<a class="navbar-brand logo_h" href="./">RowdyBooks</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="./">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop New</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Trade Market</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
-									<li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">About Us</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <!-- Logo -->
+                    <a class="navbar-brand logo_h" href="./">RowdyBooks</a>
+                    <a class="navbar-brand logo_h" href="./"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item active"><a class="nav-link" href="./">Home</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">Shop New</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">Trade Market</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">About Us</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                  aria-expanded="false">My Account</a>
-								<ul class="dropdown-menu">
-                                	<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                               	</ul>
-							</li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-						</ul>
-					</div>
-				</div>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
-			<div class="search_input" id="search_input_box">
-				<div class="container">
-					<form class="d-flex justify-content-between">
-						<!-- magnifier icon inside search bar-->
-						<span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
-						<input type="text" class="form-control" id="search_input" placeholder="Search">
-						<button type="submit" class="btn"></button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+            <div class="search_input" id="search_input_box">
+                <div class="container">
+                    <form class="d-flex justify-content-between">
+                        <!-- magnifier icon inside search bar-->
+                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
+                        <input type="text" class="form-control" id="search_input" placeholder="Search">
+                        <button type="submit" class="btn"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
 
 	<!-------------------------------------- Modifications by Kaleb Phillips: Banner Area ------------------------------------------
 		* Updated text in the banner for displaying new books.
@@ -911,38 +913,8 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 		</div>
 	<!-- end product Area -->
 
-	<!-------------------------------------- Modifications by Kaleb Phillips: Footer Area ------------------------------------------
-		* Updated text for About Us section to a placeholder.
-		* Removed newsletter forom.
-		* Removed Instagram feed section.
-		* Removed social media account links.
-	------------------------------------------------------------------------------------------------------------------------------->
-
-	<!-- start footer Area -->
-	<footer class="footer-area section_gap">
-	    <div class="container">
-            <div class="row">
-                <div class="single-footer-widget">
-                    <h6>About Us</h6>
-                    <p>
-                    RowdyBooks is designed for UTSA students to provide a way
-                    for them to buy and trade books in both physical and
-                    E-book formats. RowdyBooks allows students to trade their
-                    textbooks with other students when they no longer need them.
-                    This gives students a chance to get a textbook they will
-                    need by trading the ones they are not using anymore or
-                    provide them access to affordable textbooks.
-                    </p>
-                </div>
-            </div>
-        <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-            <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-    </footer>
-	<!-- End footer Area -->
+	<!-- Include footer -->
+    <?php include('footer.php'); ?>
 
 	<!-------------------------------------- Modifications by Kaleb Phillips: JavaScript -------------------------------------------
 		* Added functionality for page changing buttons in filter bars of the category area.

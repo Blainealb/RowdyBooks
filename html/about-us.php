@@ -1,7 +1,7 @@
 <!--
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
-	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/  
+	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
 	code modified by @author Kaleb Phillips
 -->
 <?php
@@ -27,178 +27,137 @@ session_start();
     <title>RowdyBooks</title>
 
     <!--
-            CSS
-            ============================================= -->
-     <link rel="stylesheet" href="../assets/css/linearicons.css">
+        CSS
+        ============================================= -->
+    <link rel="stylesheet" href="../assets/css/linearicons.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.css">
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/themify-icons.css">
     <link rel="stylesheet" href="../assets/css/nice-select.css">
     <link rel="stylesheet" href="../assets/css/nouislider.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/main.css"> 
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
-
-    <!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<!-- Logo -->
-                                        <a class="navbar-brand logo_h" href="./">RowdyBooks</a>
-					<a class="navbar-brand logo_h" href="index.php"><img src="img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop New</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Trade Market</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
-									<li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown active">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">About Us</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item active"><a class="nav-link" href="about-us.php">About Us</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-                                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                 aria-expanded="false">My Account</a>
-                                                                <ul class="dropdown-menu">
-                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                                                                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                                                                </ul>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-                                                        <li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-                                                        <!-- Button to open search bar -->
-                                                        <!--
-                                                        <li class="nav-item">
-                                                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                                                        </li>-->
-                                                </ul>
-                                        </div>
-                                </div>
-                        </nav>
+	<!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <!-- Logo -->
+                    <a class="navbar-brand logo_h" href="./">RowdyBooks</a>
+                    <a class="navbar-brand logo_h" href="./"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">Shop New</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">Trade Market</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">About Us</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item active"><a class="nav-link" href="about-us.php">About Us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">My Account</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="search_input" id="search_input_box">
-                        <div class="container">
-                                <form class="d-flex justify-content-between">
-                                        <!-- magnifier icon inside search bar-->
-                                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
-                                        <input type="text" class="form-control" id="search_input" placeholder="Search">
-                                        <button type="submit" class="btn"></button>
-                                        <!-- Button to hide the search bar -->
-                                        <!--<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>-->
-                                </form>
-                        </div>
+            </nav>
+            <div class="search_input" id="search_input_box">
+                <div class="container">
+                    <form class="d-flex justify-content-between">
+                        <!-- magnifier icon inside search bar-->
+                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
+                        <input type="text" class="form-control" id="search_input" placeholder="Search">
+                        <button type="submit" class="btn"></button>
+                    </form>
                 </div>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-				<!-- magnifier icon inside search bar-->
-                                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
-                                        <input type="text" class="form-control" id="search_input" placeholder="Search">
-                                        <button type="submit" class="btn"></button>
-                                        <!-- Button to hide the search bar -->
-                                        <!--<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>-->
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+	<!-------------------------------------- Modifications by Kaleb Phillips: Banner Area --------------------------------------------
+		* Updated banner pages and links
+	--------------------------------------------------------------------------------------------------------------------------------->
 
-    <!-- Start Banner Area -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+        <div class="container" style="height: 100px">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="height: 10px">
                 <div class="col-first">
-                    <h1>Order Tracking</h1>
+                    <h1>About Us</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Fashon Category</a>
+                        <a href="./">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="about-us.php">About Us</a>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Banner Area -->
+	<!-- End Banner Area -->
 
-    <!--================Tracking Box Area =================-->
-    <section class="tracking_box_area section_gap">
+	<!-------------------------------------- Modifications by Kaleb Phillips: About Us Area -----------------------------------------
+		* Created About Us text box class and added it to About Us Area.
+		* Added the text for About Us.
+		* Removed code from template that was not needed.
+	--------------------------------------------------------------------------------------------------------------------------------->
+
+
+   <!-- Start About Us Area -->
+   <section class="blog_area single-post-area section_gap">
         <div class="container">
-            <div class="tracking_box_inner">
-                <p>To track your order please enter your Order ID in the box below and press the "Track" button. This
-                    was given to you on your receipt and in the confirmation email you should have received.</p>
-                <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="order" name="order" placeholder="Order ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Billing Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Billing Email Address'">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <button type="submit" value="submit" class="primary-btn">Track Order</button>
-                    </div>
-                </form>
+            <div class="about_us_text_box">
+                <h2 style="margin-left: 60px; margin-right: 60px;">
+                    RowdyBooks is designed for UTSA students to provide a way
+                    for them to buy and trade books in both physical and
+                    E-book formats. RowdyBooks allows students to trade their
+                    textbooks with other students when they no longer need them.
+                    This gives students a chance to get a textbook they will
+                    need by trading the ones they are not using anymore or
+                    provide them access to affordable textbooks.
+                </h2>
             </div>
         </div>
     </section>
-    <!--================End Tracking Box Area =================-->
-    <!-- Start footer Area -->	
-	<footer class="footer-area section_gap">
-                <div class="container">
-                        <div class="row">
-                                <div class="col-lg-3  col-md-6 col-sm-6">
-                                        <div class="single-footer-widget">
-                                                <h6>About Us</h6>
-                                                <p>
-                                                        RowdyBooks.
-                                                </p>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-                                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                        </div>
-                </div>
-        </footer>
+   <!-- End About Us Area -->
 
-    <!-- End footer Area -->
-
-
-
+	<!-- Include footer -->
+    <?php include('footer.php'); ?>
 
     <script src="../js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"

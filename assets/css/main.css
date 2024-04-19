@@ -14,7 +14,23 @@
 /* Wide Mobile Layout: 480px */
 /* Section Gaps css
 ============================================================================================ */
+
+/*-------------------------------------- Modifications by Kaleb Phillips: CSS ---------------------------------------------------
+	* Addaed colors.css for easily updating the colors on the website.
+    * Added about_us_text_box class for displaying on the About Us page.
+-------------------------------------------------------------------------------------------------------------------------------*/
+
 @import url("colors.css");
+
+.about_us_text_box {
+  height: 400px;
+  width: 1100px;
+  background-color: var(--text-box-color);
+  border-radius:20px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
 
 .no-padding {
   padding: 0; }
