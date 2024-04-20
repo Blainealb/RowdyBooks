@@ -50,7 +50,7 @@ session_start();
                                                 <span class="icon-bar"></span>
                                                 <span class="icon-bar"></span>
                                         </button>
-<!-- Collect the nav links, forms, and other content for toggling -->
+					<!-- Collect the nav links, forms, and other content for toggling -->
                                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                                                 <ul class="nav navbar-nav menu_nav ml-auto">
                                                         <li class="nav-item active"><a class="nav-link" href="./">Home</a></li>
@@ -129,24 +129,31 @@ session_start();
             <div class="billing_details" >
                 <div class="row">
                     <div class="col-lg-8">
-                        <h4>Update Email and Password</h4>
+                        <h4>Update Password</h4>
                         <h3></h3>
-                        <form class="row contact_form" action="update-profile.php" method="post" novalidate="novalidate">
+                        <form id="updateForm" class="row contact_form" action="update-profile.php" method="post" novalidate="novalidate">
 			    <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Current Email">
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="newpwd" name="newpwd" placeholder="New Password">
+                                <input type="password" class="form-control" id="newpwd" name="newpwd" placeholder="New Password">
 			    </div>
-				 <button type="submit" class="primary-btn">Update Profile</button>	
+			    <div class="col-md-12 form-group p_star">
+    				<input type="password" class="form-control" id="confirmpwd" name="confirmpwd" placeholder="Confirm New Password">
+			    </div>
+			    <!-- Error message placeholder -->
+                            <span id="passwordError" style="color: red;"></span>
+				<button type="submit" class="primary-btn">Update Profile</button>	
                         </form>
 
                         <style>
                             .filter-list2 {
                                 display: inline-block;
-margin-right: 20px;
+				margin-right: 20px;
                             }
-                        </style>
+			</style>
+	
+    </section>
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
                 <div class="container">
@@ -186,6 +193,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="../js/gmaps.min.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("updateForm").addEventListener("submit", function (event) {
+            // Retrieve password input fields
+            var newPassword = document.getElementById("newpwd");
+            var confirmPassword = document.getElementById("confirmpwd");
+            var passwordError = document.getElementById("passwordError");
+
+            // Reset error message and border colors
+            passwordError.textContent = "";
+            newPassword.style.borderColor = "";
+            confirmPassword.style.borderColor = "";
+
+            // Check if passwords match
+            if (newPassword.value !== confirmPassword.value) {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Set border color to red for both input fields
+                newPassword.style.borderColor = "red";
+                confirmPassword.style.borderColor = "red";
+
+                // Display error message
+                passwordError.textContent = "Passwords do not match. Please try again.";
+            }
+        });
+    });
+</script>
+
 </body>
 
 </html>

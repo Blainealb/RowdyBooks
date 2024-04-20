@@ -18,21 +18,15 @@ session_start();
 <body>
 <!-- partial:index.partial.html -->
 <div class="form">
-  <h1>RowdyBooks</h1>
+	<h1>RowdyBooks</h1>
 
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">SIGN UP</a></li>
-      </ul>
+	<h1>What kind of user are you?</h1>
 
-      <div class="tab-content">
-        <div id="signup">
-          <h1>Create Account</h1>
-
-
-          <button class="button button-block">Log In</button>
-
-
-
+	<button class="button button-block" onclick="window.location.href='login.php'">Customer</button>
+ <?php echo "<br>"; ?>	
+	<button class="button button-block" onclick="window.location.href='vendor-login.php'">Vendor</button>
+ <?php echo "<br>"; ?>
+  	<button class="button button-block" onclick="window.location.href='admin-login.php'">Admin</button>
       </div><!-- tab-content -->
 
 </div> <!-- /form -->

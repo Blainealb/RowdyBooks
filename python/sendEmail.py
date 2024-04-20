@@ -31,7 +31,7 @@ def main():
             },
             "content": {
                 "subject": "Verify Your Email",
-                "plainText": ("Welcome to RowdyBooks!\n" 
+                "plainText": ("Welcome to RowdyBooks!\n"
                 "Enter this code to verify your email address:\n"
                 "{}".format(code)),
             }

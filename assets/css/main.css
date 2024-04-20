@@ -14,7 +14,23 @@
 /* Wide Mobile Layout: 480px */
 /* Section Gaps css
 ============================================================================================ */
+
+/*-------------------------------------- Modifications by Kaleb Phillips: CSS ---------------------------------------------------
+	* Addaed colors.css for easily updating the colors on the website.
+    * Added about_us_text_box class for displaying on the About Us page.
+-------------------------------------------------------------------------------------------------------------------------------*/
+
 @import url("colors.css");
+
+.about_us_text_box {
+  height: 400px;
+  width: 1100px;
+  background-color: var(--text-box-color);
+  border-radius:20px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
 
 .no-padding {
   padding: 0; }
@@ -274,21 +290,25 @@ h1, h2, h3, h4, h5, h6 {
       color: #222222;
       background: #f9f9ff;
       border: 1px solid transparent; }
+  /*-------------------------------------- Modifications by Kaleb Phillips: genric-btn.primary Class ------------------------------
+    * Updated colors of button to primary color to primary-color.
+    * Updated highlight hover color of button to primary-color3.
+  -------------------------------------------------------------------------------------------------------------------------------*/
   .genric-btn.primary {
-    color: #fff;
-    background: #ffba00;
+    color: var(--primary-color);
+    background: var(--primary-color);
     border: 1px solid transparent; }
     .genric-btn.primary:hover {
-      color: #ffba00;
-      border: 1px solid #ffba00;
-      background: #fff; }
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      background:var(--primary-color3); }
   .genric-btn.primary-border {
-    color: #ffba00;
-    border: 1px solid #ffba00;
-    background: #fff; }
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color); }
     .genric-btn.primary-border:hover {
       color: #fff;
-      background: #ffffff;
+      background: var(--primary-color);
       border: 1px solid transparent; }
   .genric-btn.success {
     color: #fff;
@@ -297,7 +317,7 @@ h1, h2, h3, h4, h5, h6 {
     .genric-btn.success:hover {
       color: #4cd3e3;
       border: 1px solid #4cd3e3;
-      background: #fff; }
+      background: var(--primary-color); }
   .genric-btn.success-border {
     color: #4cd3e3;
     border: 1px solid #4cd3e3;
@@ -3171,6 +3191,10 @@ label {
     .sorting .nice-select .list {
       border-radius: 0px; }
 
+/*-------------------------------------- Modifications by Kaleb Phillips: Pagination Class --------------------------------------
+		* Addaed inactive class to set color of numbers on buttons.
+-------------------------------------------------------------------------------------------------------------------------------*/
+
 .pagination {
   margin-top: 10px;
   border-left: 1px solid #eee;
@@ -3184,6 +3208,8 @@ label {
     .pagination a.active {
       background: var(--secondary-color);
       color: #fff; }
+    .pagination a.inactive {
+      color: #000; }
     .pagination a:hover {
       background: var(--secondary-color);
       color: #fff; }
