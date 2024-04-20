@@ -242,9 +242,11 @@ $cart_book3_price = $cart[2]['price'];
                                         </div>
                                     </div>
                                 </td>
-                                <td  id="book1_price">
-                                    <h6><?php echo $cart_book1_price ?></h6>
-                                </td>
+								<td>
+									<strong id="book1_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book1_price ?>
+									</strong?
+								</td>
                                 <td>
                                     <br>
                                     <div class="product_count">
@@ -261,12 +263,12 @@ $cart_book3_price = $cart[2]['price'];
                                         <!-- Cart table 1 remove button -->
                                         <a type="button" class="genric-btn primary small" onclick="remove('button1', book1_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
-                                </td>
-								<h6>
-                                	<td id="book1_total_price">
-                                    	<?php echo $cart_book1_price ?>
-                                	</td>
-								</h6>
+								</td>
+								<td id>
+									<strong id="book1_total_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book1_price ?>
+									</strong>
+								</td>
                             </tr>
                             <!-- Cart table 2 -->
                             <tr id="table2">
@@ -286,9 +288,11 @@ $cart_book3_price = $cart[2]['price'];
                                         </div>
                                     </div>
                                 </td>
-                                <td id="book2_price">
-                                    <h6><?php echo $cart_book2_price ?></h6>
-                                </td>
+								<td>
+									<strong id="book2_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book2_price ?>
+									</strong>
+								</td>
                                 <td>
                                     <br>
                                     <div class="product_count">
@@ -306,11 +310,11 @@ $cart_book3_price = $cart[2]['price'];
                                         <a type="button" class="genric-btn primary small" onclick="remove('button2', book2_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
                                 </td>
-								<h6>
-                                	<td id="book2_total_price">
-                                    	<?php echo $cart_book2_price ?>
+                                	<td>
+										<strong id="book2_total_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+                                    		<?php echo $cart_book2_price ?>
+										</strong>
                                 	</td>
-								</h6>
                             </tr>
                             <!-- Cart table 3 -->
                             <tr id="table3">
@@ -330,9 +334,11 @@ $cart_book3_price = $cart[2]['price'];
                                         </div>
                                     </div>
                                 </td>
-                                <td id="book3_price">
-                                    <h6><?php echo $cart_book3_price ?></h6>
-                                </td>
+								<td>
+									<strong id="book3_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book3_price ?>
+									</strong>
+								</td>
                                 <td>
                                     <br>
                                     <div class="product_count">
@@ -350,11 +356,11 @@ $cart_book3_price = $cart[2]['price'];
                                         <a type="button" class="genric-btn primary small" onclick="remove('button3', book3_isbn)" style="color: var(--primary_color)">Remove</a>
                                     </div>
                                 </td>
-								<h6>
-                                	<td id="book3_total_price">
-                                    	<?php echo $cart_book3_price ?>
-                                	</td>
-								</h6>
+								<td>
+									<strong id="book3_total_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book3_price ?>
+									</strong>
+								</td>
                             </tr>
                             <tr class="bottom_button">
                                 <td>
@@ -364,11 +370,11 @@ $cart_book3_price = $cart[2]['price'];
                                 <td>
                                     <h6>Subtotal</h6>
                                 </td>
-								<h6>
-                                	<td id="total_price">
-                                    	<?php echo $cart_book1_price + $cart_book2_price + $cart_book3_price ?>
-                             		</td>
-								</h6>
+								<td id="total_price">
+									<strong id="total_price" style="font-size: 1.17em; font-family: 'Poppins', sans-serif; font-weight: 500; line-height: 1.2;">
+										<?php echo $cart_book1_price + $cart_book2_price + $cart_book3_price ?>
+									</strong>
+								</td>
                             </tr>
                             <tr>
 
@@ -401,16 +407,16 @@ $cart_book3_price = $cart[2]['price'];
     <?php include('footer.php'); ?>
 
     <!-------------------------------------- Modifications by Kaleb Phillips: JavaScript -------------------------------------------
-        * Added functionality for displaying book titles and covers from the database.
-	* Added variables to store book info and retrieve it from php variables.
-	* Added variable to store login status and retrieve it from php the variable.
-        * Added a functino to remove books when the remove button is clicked.
-        * Added ajax to update the cart database after removing a book from the cart.
-        * Added a function for hiding table rows that don't have books.
-        * Added a function for hidding all table rows.
-        * Added checks for empty table rows.
-        * Added functionality to determine user login status and display or hide a message accordingly.
-        * Added function to determine if the cart is empty display or hide a message accordingly.
+		* Added functionality for displaying book titles and covers from the database.
+		* Added variables to store book info and retrieve it from php variables.
+		* Added variable to store login status and retrieve it from php the variable.
+		* Added a functino to remove books when the remove button is clicked.
+		* Added ajax to update the cart database after removing a book from the cart.
+		* Added a function for hiding table rows that don't have books.
+		* Added a function for hidding all table rows.
+		* Added checks for empty table rows.
+		* Added functionality to determine user login status and display or hide a message accordingly.
+		* Added function to determine if the cart is empty display or hide a message accordingly.
     --------------------------------------------------------------------------------------------------------------------------------->
 
     <script>
@@ -430,7 +436,7 @@ $cart_book3_price = $cart[2]['price'];
 		var book3_price = <?php echo json_encode($cart_book3_price); ?>;
 
         // Loggedin status
-        loggedin = <?php echo json_encode($loggedin); ?>;=
+        loggedin = <?php echo json_encode($loggedin); ?>;
 
 
         // Hide cart table elements with empty book slots
@@ -523,14 +529,14 @@ $cart_book3_price = $cart[2]['price'];
         }
     </script>
 
-    	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
 	<script src="../js/vendor/bootstrap.min.js"></script>
 	<script src="../js/jquery.ajaxchimp.min.js"></script>
 	<script src="../js/jquery.nice-select.min.js"></script>
 	<script src="../js/jquery.sticky.js"></script>
-    	<script src="../js/nouislider.min.js"></script>
+	<script src="../js/nouislider.min.js"></script>
 	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<script src="../js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
