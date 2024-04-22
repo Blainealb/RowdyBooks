@@ -69,7 +69,7 @@ if (isset($_POST['functionname']) && isset($_POST['login']) && isset($_POST['ema
 			echo json_encode(["code" => "You are not logged in"]);
 		}
 		else {
-			echo json_encode(["code" => "Error"])
+			echo json_encode(["code" => "Error"]);
 		}
 	}
 }
@@ -148,7 +148,7 @@ function sendCode ($email) {
  * @param email - the email address to send the code to.
  * @return - an int with zero to indicate success.
  */
-function validRequest ($loggedin, $email) {
+function validRequest($loggedin, $email) {
 	// Check if user is logged in
 	if ($loggedin) {
 		// Check if the email has already been verified
@@ -170,17 +170,16 @@ function validRequest ($loggedin, $email) {
 }
 
 /**
- * Function: validRequest
+ * Function: verifyCode
  * Description: Validates that all the conditions
- * for a request to send a code have been met
- * and calls sendCode accordingly.
+ * for a request to verify have been met
+ * and verifies the code entered by the user.
  * @param loggedin - a boolean with true if the user is loggedin.
  * @param id - the user ID of the user.
  * @param email - the email address of the user..
  * @param code - the code entered by the user to validate.
  * @return - an int with zero to indicate success.
  */
-//require "dbconnect.php";
 function verifyCode ($loggedin, $id, $email, $code) {
 	// Use the global variable for connection
 	global $connection;

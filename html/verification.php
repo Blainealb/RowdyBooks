@@ -43,12 +43,12 @@ else {
 	<h1 style="font-weight: bold; font-size: 38px;">Let's Verify Your Email</h1>
 
 	<!-- Sending code message -->
-	<div id="sending" style="text-align: center; display: none;">
+	<div id="sendingMessage" style="text-align: center; display: none;">
 		<h1> Emailing you a code, please wait...</h1>
 	</div>
 
 	<!-- Send code button -->
-	<input type="button" id="sending" onclick="sendingCode()" value="Send Me a Code" class="button button-block" style="padding: 10px; position: absolute; top: 50%; left: 50%; ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 340px; height: 100px; display:inline-block;"></button>
+	<input type="button" id="sendCode" onclick="sendingCode()" value="Send Me a Code" class="button button-block" style="padding: 10px; position: absolute; top: 50%; left: 50%; ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 340px; height: 100px; display:inline-block;"></button>
 
 </div> <!-- /form -->
 <!-- partial -->
@@ -65,7 +65,7 @@ else {
 	 */
 	function sendingCode() {
 		// Display sending code message
-		document.getElementById("sending").style = "display: block";
+		document.getElementById("sendingMessage").style = "display: block";
 		// Get the login status and email of the user
 		var loggedin = <?php echo json_encode($loggedin); ?>;
 		var address = <?php echo json_encode($email); ?>;
@@ -80,7 +80,7 @@ else {
 				console.log(result.request);
 				alert(result.request);
 				// Hide sending code message
-				document.getElementById("sending").style = "display: none";
+				document.getElementById("sendingMessage").style = "display: none";
 				// If the code was sent
 				if (result.request == "You're code has been sent") {
 					// Redirect to verify page where the code can be entered

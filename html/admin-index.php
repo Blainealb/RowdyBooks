@@ -2,8 +2,9 @@
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
-	code modified by @author Kaleb Phillips
+	code modified by @author Kaleb 
 --------------------------------------------------------------------------------------------------------------------------------->
+
 <?php
 // session_start();
 
@@ -23,39 +24,39 @@
 // 	* Added array for page changing buttuns in the recent viewed filter bar.
 // --------------------------------------------------------------------------------------------------------------------------------*/
 
-// // Holds the data for page changing buttuns in category area
-// $category_pages = array("button1"=>"active", "button2"=>"inactive",
-// 			   "button3"=>"inactive", "button4"=>"inactive",
-// 			   "display1"=>1, "display2"=>2,
-// 			   "display3"=>3, "display4"=>6,
-// 			   "total"=>6, "area"=>"category");
+// Holds the data for page changing buttuns in category area
+$category_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"category");
 
-// // Holds the data for page changing buttuns in recent viewed area
-// $recent_pages = array("button1"=>"active", "button2"=>"inactive",
-// 			   "button3"=>"inactive", "button4"=>"inactive",
-// 			   "display1"=>1, "display2"=>2,
-// 			   "display3"=>3, "display4"=>6,
-// 			   "total"=>6, "area"=>"recent");
+// Holds the data for page changing buttuns in recent viewed area
+$recent_pages = array("button1"=>"active", "button2"=>"inactive",
+			   "button3"=>"inactive", "button4"=>"inactive",
+			   "display1"=>1, "display2"=>2,
+			   "display3"=>3, "display4"=>6,
+			   "total"=>6, "area"=>"recent");
 
-// // Retrieve Products from Database
-// require "bookFunctions.php";
-// require "dbconnect.php";
+// Retrieve Products from Database
+require "bookFunctions.php";
+require "dbconnect.php";
 
-// // Retrieve the First Banner Book
-// $banner_book1 = getBook("999-1234567890");
+// Retrieve the First Banner Book
+$banner_book1 = getBook("999-1234567890");
 
-// // Retrieve the Second Banner Book
-// $banner_book2 = getBook("999-0000000002");
+// Retrieve the Second Banner Book
+$banner_book2 = getBook("999-0000000002");
 
-// // Retrieve the Category Covers
-// $category_books = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
-// "999-1234567891","999-1234567892", "999-1234567893",
-// "999-1234567894", "999-1234567895");
+// Retrieve the Category Covers
+$category_books = getBooks("999-1234567890", "999-0000000002", "999-0000000003",
+"999-1234567891","999-1234567892", "999-1234567893",
+"999-1234567894", "999-1234567895");
 
-// // Retrieve the Recently Viewed Books
-// $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
-// "999-1234567893","999-1234567891", "999-1234567894",
-// "999-1234567890", "999-1234567892");
+// Retrieve the Recently Viewed Books
+$recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
+"999-1234567893","999-1234567891", "999-1234567894",
+"999-1234567890", "999-1234567892");
 
 ?>
 
@@ -1038,3 +1039,4 @@
 </body>
 
 </html>
+
