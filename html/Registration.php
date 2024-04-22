@@ -47,11 +47,17 @@ if(mysqli_num_rows($result) > 0) {
 	echo "<h1 class='success'>Account Successfully Added!</h1>";
         echo "<h1>Hi, ".$_SESSION['username']."Welcome to RowdyBooks!</h1>";
 
-        // Send an email to the email address provided
-	require "verifyFunctions.php";
-	sendCode($email);
-	header("Location: verify.php");
-    	exit();
+		// Send an email to the email address provided
+		//require "verifyFunctions.php";
+		//sendCode($email);
+		if(isset($_SESSION['userid'])) {
+			//header("Location: verify.php");
+			header("Location: verification.php");
+    		exit();
+		}
+		else {
+			echo "<h1 class='error'><b>ERROR: Unable to add user</b></h1>";
+		}
     } else {
         echo "<h1 class='error'><b>ERROR: Unable to add user</b></h1>";
     }
