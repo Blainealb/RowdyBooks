@@ -61,7 +61,7 @@ if(array_key_exists('verify', $_POST)) {
                             $query = "UPDATE Admin SET admin_verified = '$admin_email' WHERE admin_id = '$admin_id' LIMIT 1";
 $result = mysqli_query($connection, $query);
                             echo "Thank you for verifying you're email";
-                            header("Location: profile.php");
+                            header("Location: dashboard_admin.php");
                             die();
                         }
                         else {

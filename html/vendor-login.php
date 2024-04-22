@@ -26,72 +26,62 @@ session_start();
 
       <ul class="tab-group">
         <li class="tab active"><a href="#signup">SIGN UP</a></li>
-        <li class="tab"><a href="#login">LOG IN</a></li>
+        <li class="tab"><a href="#login">LOG IN</a></li> 
       </ul>
 
       <div class="tab-content">
         <div id="signup">
           <h1>Create Vendor Account</h1>
+ 	  <form action="vendor-registration.php" method="post">
+	     <div class="field-wrap">
+      <label>
+        Vendor Name<span class="req">*</span>
+      </label>
+      <input type="text" id="vendor_name" name="vendor_name" required autocomplete="off" />
+    </div>
 
+    <div class="field-wrap">
+      <label>
+        Email Address<span class="req">*</span>
+      </label>
+      <input type="email" id="vendor_email" name="vendor_email" required autocomplete="off" />
+    </div>
 
-          <!-- start of form -->
-          <form action="Registration.php" method="post">
+    <div class="field-wrap">
+      <label>
+        Set A Password<span class="req">*</span>
+      </label>
+      <input type="password" id="vendor_pwd" name="vendor_pwd" required autocomplete="off" />
+    </div>
 
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                Name<span class="req">*</span>
-              </label>
-              <input type="text" id ="vendor_name" name="vendor_name" required autocomplete="off" />
-            </div>
-
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email" id ="vendor_email" name="vendor_email" required autocomplete="off"/>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            <input type="password" id ="vendor_pwd" name="vendor_pwd" required autocomplete="off"/>
-          </div>
-
-          <button type="submit" class="button button-block">Get Started</button>
-
-          </form>
-          <!-- end of form -->
-
+    <button type="submit" class="button button-block">Get Started</button>	
+	  </form>
+	  
         </div>
 
         <div id="login">
           <h1>Welcome Back, Vendor!</h1>
-
-          <form action="home.php" method="post">
+		
+	  <form action="vendor-home.php" method="post">
 
             <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
             <input type="email" id ="vendor_email" name="vendor_email" required autocomplete="off"/>
-          </div>
-
-
-          <div class="field-wrap">
-	  <label>
+            </div>
+            <div class="field-wrap">
+            <label>
               Password<span class="req">*</span>
             </label>
             <input type="password" id ="vendor_pwd" name="vendor_pwd" required autocomplete="off"/>
-          </div>
+            </div>
 
           <p class="forgot"><a href="#">Forgot Password?</a></p>
 
           <button class="button button-block">Log In</button>
 
           </form>
-
         </div>
 
       </div><!-- tab-content -->

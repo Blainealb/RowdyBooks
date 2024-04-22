@@ -86,7 +86,7 @@ session_start();
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                  aria-expanded="false">My Account</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="check-user.php">Login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                                 </ul>
                             </li>

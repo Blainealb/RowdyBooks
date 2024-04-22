@@ -118,9 +118,9 @@ session_start();
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
                     <h1>Edit Profile</h1>
-                </div>
-            </div>
-        </div>
+		</div>
+	    </div>
+	</div>
     </section>
     <!-- End Banner Area -->
 
@@ -143,7 +143,7 @@ session_start();
 			    </div>
 			    <!-- Error message placeholder -->
                             <span id="passwordError" style="color: red;"></span>
-				<button type="submit" class="primary-btn">Update Profile</button>	
+				<button type="submit" class="genric-btn primary large" style="font-size : 20px; color: var(--primary_color)">Update Profile</button>
                         </form>
 
                         <style>

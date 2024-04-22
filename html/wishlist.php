@@ -1,8 +1,8 @@
 <!--
-	This file was provided by a template and was modified to fit the needs of our website.
-	The template can be found here:
-	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
-	code modified by @author Kaleb Phillips
+        This file was provided by a template and was modified to fit the needs of our website.
+        The template can be found here:
+        https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/
+        code modified by @author Kaleb Phillips
 -->
 <?php
 session_start();
@@ -40,7 +40,7 @@ session_start();
 </head>
 
 <body>
-	<!-- Start Header Area -->
+        <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light main_box">
@@ -54,7 +54,7 @@ session_start();
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+</button>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
@@ -66,19 +66,19 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="category.php">Shop Category</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item submenu dropdown">
+                            <li class="nav-item submenu dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                  aria-expanded="false">Trade Market</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="trade.php">Trade</a></li>
+                                    <li class="nav-item active"><a class="nav-link" href="trade.php">Trade</a></li>
                                     <li class="nav-item"><a class="nav-link" href="trade-in.php">Trade In</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item submenu dropdown active">
+                            <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                  aria-expanded="false">About Us</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item active"><a class="nav-link" href="about-us.php">About Us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
                                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                                 </ul>
                             </li>
@@ -86,7 +86,7 @@ session_start();
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                  aria-expanded="false">My Account</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="check-user.php">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                                 </ul>
                             </li>
@@ -109,70 +109,67 @@ session_start();
             </div>
         </div>
     </header>
-    <!-- End Header Area -->
+<!-- End Header Area -->
 
-	<!-------------------------------------- Modifications by Kaleb Phillips: Banner Area --------------------------------------------
-		* Updated banner pages and links
-	--------------------------------------------------------------------------------------------------------------------------------->
+        <!-------------------------------------- Modifications by Blaine Byrd: Banner Area --------------------------------------------
+                * Updated banner pages/links
+        --------------------------------------------------------------------------------------------------------------------------------->
 
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
-        <div class="container" style="height: 100px">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="height: 10px">
+        <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>About Us</h1>
+                    <h1>Wishlist</h1>
                     <nav class="d-flex align-items-center">
                         <a href="./">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="about-us.php">About Us</a>
+                        <a href="wishlist.php">Wishlist</a>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
-	<!-- End Banner Area -->
+    <!-- End Banner Area -->
 
-	<!-------------------------------------- Modifications by Kaleb Phillips: About Us Area -----------------------------------------
-		* Created About Us text box class and added it to About Us Area.
-		* Added the text for About Us.
-		* Removed code from template that was not needed.
-	--------------------------------------------------------------------------------------------------------------------------------->
+        <!-------------------------------------- Modifications by Blaine Byrd: Coming Soon Area ---------------------------------------
+                * Added coming soon text.
+                * Added return to home page button.
+                * Removed extra code from template that was not needed.
+        --------------------------------------------------------------------------------------------------------------------------------->
 
+    <!-- Start Coming Soon Area -->
+    <div id="loginMessage" style="text-align: center">
+        <h1 style="font-size: 60px"> Coming Soon </h1>
+        <h2> Click to return to the profile page </h2>
+        <br>
+        <a href="profile.php" type="button" class="genric-btn primary large" style="font-size : 20px; color: var(--primary_color)">Profile</a>
+    </div>
+    <!-- End Coming Soon Area -->
 
-   <!-- Start About Us Area -->
-   <section class="blog_area single-post-area section_gap">
+        <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section_gap">
         <div class="container">
-            <div class="about_us_text_box">
-                <h2 style="margin-left: 60px; margin-right: 60px;">
-                    RowdyBooks is designed for UTSA students to provide a way
-                    for them to buy and trade books in both physical and
-                    E-book formats. RowdyBooks allows students to trade their
-                    textbooks with other students when they no longer need them.
-                    This gives students a chance to get a textbook they will
-                    need by trading the ones they are not using anymore or
-                    provide them access to affordable textbooks.
-                </h2>
-            </div>
         </div>
     </section>
-   <!-- End About Us Area -->
+    <!--================Blog Area =================-->
 
-	<!-- Include footer -->
+        <!-- Include footer -->
     <?php include('footer.php'); ?>
 
-    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="../js/vendor/bootstrap.min.js"></script>
-	<script src="../js/jquery.ajaxchimp.min.js"></script>
-	<script src="../js/jquery.nice-select.min.js"></script>
-	<script src="../js/jquery.sticky.js"></script>
-    <script src="../js/nouislider.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../js/gmaps.min.js"></script>
-	<script src="../js/main.js"></script>
+        <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+         crossorigin="anonymous"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
+<script src="../js/jquery.ajaxchimp.min.js"></script>
+        <script src="../js/jquery.nice-select.min.js"></script>
+        <script src="../js/jquery.sticky.js"></script>
+        <script src="../js/nouislider.min.js"></script>
+        <script src="../js/jquery.magnific-popup.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="../js/gmaps.min.js"></script>
+        <script src="../js/main.js"></script>
 </body>
 
-</html>
+

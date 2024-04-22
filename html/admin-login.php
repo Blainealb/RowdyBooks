@@ -95,7 +95,7 @@ session_start();
         <div id="login">
           <h1>Welcome Back, Admin!</h1>
 
-          <form action="home.php" method="post">
+          <form action="admin-home.php" method="post">
 
             <div class="field-wrap">
             <label>

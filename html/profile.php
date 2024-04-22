@@ -113,7 +113,7 @@ $userEmail = $_SESSION['email'];
 								 aria-expanded="false">My Account</a>
 						
                                                                 <ul class="dropdown-menu">
-                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                                                                        <li class="nav-item"><a class="nav-link" href="check-user.php">Login</a></li>
 									<li class="nav-item active"><a class="nav-link" href="profile.php">Profile</a></li>
 
 								</ul>
@@ -162,7 +162,7 @@ $userEmail = $_SESSION['email'];
                                                 <li class="main-nav-list"><a href="edit-profile.php"><span 
                                                                  class="lnr lnr-arrow-right"></span>Edit Profile</a>
                                                 </li>
-                                                <li class="main-nav-list"><a href="#"><span 
+                                                <li class="main-nav-list"><a href="wishlist.php"><span 
                                                                  class="lnr lnr-arrow-right"></span>View Wishlist</a>
                                                 </li>
                                                 <li class="main-nav-list"><a href="logout.php"><span
@@ -186,14 +186,14 @@ $userEmail = $_SESSION['email'];
 	
 		<div class="profile">
 			<?php
-                    $isLoggedIn = true; // You should replace this with your actual check for user login status
+                    $isLoggedIn = true; 
                     if ($isLoggedIn) {
 ?>
 
 		    <?php
                     } else {
                         // If the user is not logged in, redirect them to the login page
-                        header("Location: login.php");
+                        header("Location: user-check.php");
                         exit(); // Stop further execution
                     }
                     ?>
