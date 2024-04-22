@@ -88,12 +88,12 @@ else {
 				}
 				else if (result.request == "You're already verified") {
 					// Redirect to profile page
-                    window.location.href = "profile.php";
-                }
-                else if (result.request == "You are not logged in") {
+					window.location.href = "profile.php";
+				}
+				else if (result.request == "You are not logged in") {
 					// Redirect to login page
-                    window.location.href ="login.php";
-                }
+					window.location.href ="login.php";
+				}
 			}
 		});
 	}

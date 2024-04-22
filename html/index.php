@@ -639,7 +639,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[1]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -650,9 +650,9 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
 									<a href="single-product.php?book=<?php echo $recent_books[1]['id_books'] ?>" class="social-info">
-                                    	<span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view more</p>
-                                    </a>
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -669,7 +669,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[2]['id_books'] ?>">
 									<h6><?php echo $recent_books[2]['title'] ?></h6>
@@ -677,7 +677,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[2]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -687,10 +687,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                  	<a href="single-product.php?book=<?php echo $recent_books[2]['id_books'] ?>" class="social-info">
-                                 		<span class="lnr lnr-move"></span>
-                     	           		<p class="hover-text">view more</p>
-                                  	</a>
+									<a href="single-product.php?book=<?php echo $recent_books[2]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -707,7 +707,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[3]['id_books'] ?>">
 									<h6><?php echo $recent_books[3]['title'] ?></h6>
@@ -715,7 +715,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[3]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -725,10 +725,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                    <a href="single-product.php?book=<?php echo $recent_books[3]['id_books'] ?>" class="social-info">
-                                    	<span class="lnr lnr-move"></span>
-                                    	<p class="hover-text">view more</p>
-                                    </a>
+									<a href="single-product.php?book=<?php echo $recent_books[3]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -745,7 +745,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[4]['id_books'] ?>">
 									<h6><?php echo $recent_books[4]['title'] ?></h6>
@@ -753,7 +753,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[4]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -763,10 +763,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                    <a href="single-product.php?book=<?php echo $recent_books[4]['id_books'] ?>" class="social-info">
-                                    	<span class="lnr lnr-move"></span>
-                                  		<p class="hover-text">view more</p>
-                                  	</a>
+									<a href="single-product.php?book=<?php echo $recent_books[4]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -783,7 +783,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[5]['id_books'] ?>">
 									<h6><?php echo $recent_books[5]['title'] ?></h6>
@@ -791,7 +791,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[5]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -801,10 +801,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                  	<a href="single-product.php?book=<?php echo $recent_books[5]['id_books'] ?>" class="social-info">
-                                      	<span class="lnr lnr-move"></span>
-                                    	<p class="hover-text">view more</p>
-                                 	</a>
+									<a href="single-product.php?book=<?php echo $recent_books[5]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -821,7 +821,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[6]['id_books'] ?>">
 									<h6><?php echo $recent_books[6]['title'] ?></h6>
@@ -829,7 +829,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[6]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -839,10 +839,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                    <a href="single-product.php?book=<?php echo $recent_books[6]['id_books'] ?>" class="social-info">
-                                   		<span class="lnr lnr-move"></span>
-                                		<p class="hover-text">view more</p>
-                                  	</a>
+									<a href="single-product.php?book=<?php echo $recent_books[6]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -859,7 +859,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-                            <!-- Book Title and Price -->
+							<!-- Book Title and Price -->
 							<div class="product-details">
 								<a href="single-product.php?book=<?php echo $recent_books[7]['id_books'] ?>">
 									<h6><?php echo $recent_books[7]['title'] ?></h6>
@@ -867,7 +867,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<div class="price">
 									<h6>$<?php echo $recent_books[7]['price'] ?></h6>
 									<!-- Previous price -->
-                                    <!--<h6 class="l-through">$210.00</h6>-->
+									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
@@ -877,10 +877,10 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
-                                   	<a href="single-product.php?book=<?php echo $recent_books[7]['id_books'] ?>" class="social-info">
-                                   		<span class="lnr lnr-move"></span>
-                                  		<p class="hover-text">view more</p>
-                                 	</a>
+									<a href="single-product.php?book=<?php echo $recent_books[7]['id_books'] ?>" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
 
 								</div>
 								<!-- End Buttons Below Book -->
@@ -914,7 +914,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 	<!-- end product Area -->
 
 	<!-- Include footer -->
-    <?php include('footer.php'); ?>
+	<?php include('footer.php'); ?>
 
 	<!-------------------------------------- Modifications by Kaleb Phillips: JavaScript -------------------------------------------
 		* Added functionality for page changing buttons in filter bars of the category area.
@@ -1017,20 +1017,20 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 	<!-- End Add To Bag Script -->
 
 	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
-    <script src="../js/vendor/bootstrap.min.js"></script>
-    <script src="../js/jquery.ajaxchimp.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery.sticky.js"></script>
-    <script src="../js/nouislider.min.js"></script>
-    <script src="../js/countdown.js"></script>
-    <script src="../js/jquery.magnific-popup.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/vendor/bootstrap.min.js"></script>
+	<script src="../js/jquery.ajaxchimp.min.js"></script>
+	<script src="../js/jquery.nice-select.min.js"></script>
+	<script src="../js/jquery.sticky.js"></script>
+	<script src="../js/nouislider.min.js"></script>
+	<script src="../js/countdown.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="../js/gmaps.min.js"></script>
-    <script src="../js/main.js"></script>
+	<script src="../js/main.js"></script>
 </body>
 
 </html>

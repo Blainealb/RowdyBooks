@@ -79,43 +79,43 @@ else {
 	})
 
 	/**
-     * Function: verifyCode
-     * Description: Uses ajax to call the verifyCode
-     * function to determine if the code entered
-     * matches the one in the database and sets
+	 * Function: verifyCode
+	 * Description: Uses ajax to call the verifyCode
+	 * function to determine if the code entered
+	 * matches the one in the database and sets
 	 * the email to verified accordingly.
-     */
-    function verifyCode() {
+	 */
+	function verifyCode() {
 		// Get the code entered by the user
 		var code = document.getElementById('codeInput').value
 		// Get the login status, ID, and email of the user
-        var loggedin = <?php echo json_encode($loggedin); ?>;
+		var loggedin = <?php echo json_encode($loggedin); ?>;
 		var userid = <?php echo json_encode($id); ?>;
 		var address = <?php echo json_encode($email); ?>;
 
 		// Call verifyCode from verifyFunctions.php
-        $.ajax({
-            url:"verifyFunctions.php",
-            type: "post",
-            dataType: 'json',
-            data: {functionname: 'verifyCode', login: loggedin, id: userid, email: address, code: code},
-            success:function(result){
-                console.log(result.code);
-                alert(result.code);
+		$.ajax({
+			url:"verifyFunctions.php",
+			type: "post",
+			dataType: 'json',
+			data: {functionname: 'verifyCode', login: loggedin, id: userid, email: address, code: code},
+			success:function(result){
+				console.log(result.code);
+				alert(result.code);
 				if (result.code == "Thank you for verifying you're email") {
 					// Redirect to profile page
-                    window.location.href = "profile.php";
+					window.location.href = "profile.php";
 				}
 				else if (result.code == "You're already verified") {
-                    // Redirect to profile page
-                    window.location.href = "profile.php";
-                }
-                else if (result.code == "You are not logged in") {
-                    // Redirect to login page
-                    window.location.href ="login.php";
-                }
-            }
-        });
+					// Redirect to profile page
+					window.location.href = "profile.php";
+				}
+				else if (result.code == "You are not logged in") {
+					// Redirect to login page
+					window.location.href ="login.php";
+				}
+			}
+		});
 	}
 
 	/**
@@ -141,15 +141,15 @@ else {
 				console.log(result.request);
 				alert(result.request);
 				// Hide sending code message
-        		document.getElementById("sending").style = "display: none";
+				document.getElementById("sending").style = "display: none";
 				if (result.request == "You're already verified") {
-                    // Redirect to profile page
-                    window.location.href = "profile.php";
-                }
-                else if (result.request == "You are not logged in") {
-                    // Redirect to login page
-                    window.location.href ="login.php";
-                }
+					// Redirect to profile page
+					window.location.href = "profile.php";
+				}
+				else if (result.request == "You are not logged in") {
+					// Redirect to login page
+					window.location.href ="login.php";
+				}
 			}
 		});
 	}
