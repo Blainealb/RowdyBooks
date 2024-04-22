@@ -2,9 +2,9 @@
 	This file was provided by a template and was modified to fit the needs of our website.
 	The template can be found here:
 	https://themewagon.com/themes/free-reponsive-bootstrap-4-html5-ecommerce-website-template-karma/  
-	code modified by @author Kaleb Phillips, 
--Created File Diego Aguirre
+	code modified by @author Kaleb Phillips
 -->
+
 <!--<?php
 //session_start();
 ?> -->
