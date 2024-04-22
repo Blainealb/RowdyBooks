@@ -38,39 +38,42 @@
 
 <body>
 
-    <!-- Start Header Area -->
-	<header class="header_area sticky-header">
+    <!---- Modifications by Diego Aguirre ----->
+<!-- Start Header Area -->
+<header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <!-- Logo -->
+                    <a class="navbar-brand logo_h" href="./">RowdyBooks - Admin</a>
+                    <a class="navbar-brand logo_h" href="./"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin-index.php">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop New</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+									<li class="nav-item"><a class="nav-link" href="admin-category.php">Shop Category</a></li>
 								</ul>
 							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Trade Market</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Trade</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-blog.html">Trade In</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">Trade Market</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="admin-trade.php">Trade</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="admin-trade-in.php">Trade In</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Admin</a>
 								<ul class="dropdown-menu">
@@ -78,38 +81,37 @@
 									<li class="nav-item"><a class="nav-link" href="addNewBook_admin.php">Products</a></li>
 									<li class="nav-item"><a class="nav-link" href="orders_admin.php">Orders</a></li>
 									<li class="nav-item"><a class="nav-link" href="users_admin.php">Users</a></li>
-									<li class="nav-item"><a class="nav-link" href="Messages_admin.php">Messages</a></li>
+									<li class="nav-item"><a class="nav-link" href="messages_admin.php">Messages</a></li>
 								</ul>
 							</li>
-							<li class="nav-item submenu dropdown">
-                                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                 aria-expanded="false">My Account</a>
-                                                                <ul class="dropdown-menu">
-                                                                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                                                                        <li class="nav-item"><a class="nav-link" href="contact.php">Profile</a></li>
-                                                                </ul>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                 aria-expanded="false">My Account</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="admin-check-user.php">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="admin-profile.php">Profile</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="admin-cart.php" class="cart"><span class="ti-bag"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="search_input" id="search_input_box">
+                <div class="container">
+                    <form class="d-flex justify-content-between">
+                        <!-- magnifier icon inside search bar-->
+                        <span class="lnr lnr-magnifier" style="margin-top: 13px; margin-right: 4px" id="search"></span>
+                        <input type="text" class="form-control" id="search_input" placeholder="Search">
+                        <button type="submit" class="btn"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
