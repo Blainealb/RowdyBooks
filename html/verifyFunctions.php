@@ -54,23 +54,23 @@ if (isset($_POST['functionname']) && isset($_POST['login']) && isset($_POST['ema
 		// Call the function and return the proper message to indicate the result
 		$result = verifyCode($loggedin, $id, $email, $code);
 		if ($result == 0) {
-            echo json_encode(["code" => "Thank you for verifying you're email"]);
-        }
-        else if ($result == 1) {
-            echo json_encode(["code" => "Code expired"]);
-        }
-        else if ($result == 2) {
-            echo json_encode(["code" => "Wrong code"]);
-        }
+			echo json_encode(["code" => "Thank you for verifying you're email"]);
+		}
+		else if ($result == 1) {
+			echo json_encode(["code" => "Code expired"]);
+		}
+		else if ($result == 2) {
+			echo json_encode(["code" => "Wrong code"]);
+		}
 		else if ($result == 3) {
-            echo json_encode(["code" => "You're already verified"]);
-        }
+			echo json_encode(["code" => "You're already verified"]);
+		}
 		else if ($result == 4) {
-            echo json_encode(["code" => "You are not logged in"]);
-        }
-        else {
-            echo json_encode(["code" => "Error"]);
-        }
+			echo json_encode(["code" => "You are not logged in"]);
+		}
+		else {
+			echo json_encode(["code" => "Error"])
+		}
 	}
 }
 
