@@ -593,24 +593,26 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[0]['id_books'] ?>">
 									<h6><?php echo $recent_books[0]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[0]['price'] ?></h6>
-									<!-- Previous price -->
-									<!--<h6 class="l-through">$210.00</h6>-->
 								</div>
 
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button1" onclick="addToBag(book1)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[0]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -619,6 +621,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details Below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 2 -->
@@ -631,11 +634,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[1]['id_books'] ?>">
 									<h6><?php echo $recent_books[1]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[1]['price'] ?></h6>
 									<!-- Previous price -->
@@ -645,10 +650,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button2" onclick="addToBag(book2)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[1]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -657,6 +664,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details Below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 3 -->
@@ -669,11 +677,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[2]['id_books'] ?>">
 									<h6><?php echo $recent_books[2]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[2]['price'] ?></h6>
 									<!-- Previous price -->
@@ -683,10 +693,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button3" onclick="addToBag(book3)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[2]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -695,6 +707,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details Below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 4 -->
@@ -707,11 +720,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[3]['id_books'] ?>">
 									<h6><?php echo $recent_books[3]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[3]['price'] ?></h6>
 									<!-- Previous price -->
@@ -721,10 +736,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button4" onclick="addToBag(book4)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[3]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -733,6 +750,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details Below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 5 -->
@@ -745,11 +763,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[4]['id_books'] ?>">
 									<h6><?php echo $recent_books[4]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[4]['price'] ?></h6>
 									<!-- Previous price -->
@@ -759,10 +779,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button5" onclick="addToBag(book5)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[4]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -771,6 +793,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 6 -->
@@ -783,11 +806,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[5]['id_books'] ?>">
 									<h6><?php echo $recent_books[5]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[5]['price'] ?></h6>
 									<!-- Previous price -->
@@ -797,10 +822,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button6" onclick="addToBag(book6)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[5]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -809,6 +836,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 7 -->
@@ -821,11 +849,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[6]['id_books'] ?>">
 									<h6><?php echo $recent_books[6]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[6]['price'] ?></h6>
 									<!-- Previous price -->
@@ -835,10 +865,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button7" onclick="addToBag(book7)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[6]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -847,6 +879,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details below Cover -->
 						</div>
 					</div>
 					<!-- Recently Viewed 8 -->
@@ -859,11 +892,13 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 									alt="">
 							</a>
 
-							<!-- Book Title and Price -->
+							<!-- Start Details below Cover -->
 							<div class="product-details">
+								<!-- Book Title -->
 								<a href="single-product.php?book=<?php echo $recent_books[7]['id_books'] ?>">
 									<h6><?php echo $recent_books[7]['title'] ?></h6>
 								</a>
+								<!-- Book Price -->
 								<div class="price">
 									<h6>$<?php echo $recent_books[7]['price'] ?></h6>
 									<!-- Previous price -->
@@ -873,10 +908,12 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								<!-- Start Buttons Below Book -->
 								<div class="prd-bottom">
 
+									<!-- Add To Cart Button-->
 									<a type="button" id="add_to_bag_button8" onclick="addToBag(book8)" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text" style="color: var(--text-color);">add to bag</p>
 									</a>
+									<!-- View More Button-->
 									<a href="single-product.php?book=<?php echo $recent_books[7]['id_books'] ?>" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">view more</p>
@@ -885,6 +922,7 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 								</div>
 								<!-- End Buttons Below Book -->
 							</div>
+							<!-- End Details below Cover -->
 						</div>
 					</div>
 				</div>
@@ -967,7 +1005,6 @@ $recent_books = getBooks("999-1234567896", "999-0000000002", "999-1234567897",
 	<!-- End Recently Viewed Page Button Script -->
 
 	<!-- Start Add To Bag Script -->
-	<script type="text/javascript" src="../js/pageFunctions.js"></script><!-- Remove-->
 	<script>
 
 		// ISBN of Books
