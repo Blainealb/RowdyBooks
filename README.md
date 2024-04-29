@@ -30,6 +30,9 @@ Follow these simple steps to download the project zip file and set up the app.
 15. Uncomment the code at the bottom of the file under the Local Machine section. Make sure the connection parameters in the file match the ones you see at http://localhost:8888/MAMP/ under the Examples section on the page.
 16. Navigate to http://localhost:8888/RowdyBooks-main/html/ to see the website.
 ___
+## Disclaimer
+The email verification will not send an email with a code when run locally, however, the code will be generated and stored in the verify table of the database. Entering the code from the database will allow you to verify your account when running locally.
+___
 
 ## Authors
 Blaine Byrd 
